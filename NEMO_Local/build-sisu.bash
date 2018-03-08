@@ -2,7 +2,7 @@
 
 set -ex
 
-# NEMO 3.6 STABLE + XIOS-1 build instructions for sisu.csc.fi
+# NEMO 3.6 STABLE + XIOS-2 build instructions for sisu.csc.fi
 #
 # 2018-02-20, juha.lento@csc.fi
 
@@ -13,16 +13,19 @@ set -ex
 # - https://forge.ipsl.jussieu.fr/nemo/wiki/Users/ModelInstall#ExtracttheNEMOcode
 # - https://forge.ipsl.jussieu.fr/nemo/wiki/Users/ModelInterfacing/InputsOutputs#ExtractingandinstallingXIOS
 
+#Your user name used for registering to nemo user wiki
+USER="ygong"
 
 # Load system I/O libraries
+# now use xios2.0 by default
 
-module load cray-hdf5-parallel cray-netcdf-hdf5parallel xios/1.0.703
+module load cray-hdf5-parallel cray-netcdf-hdf5parallel xios/2.0.990
 
 
 # Create the main NEMO directory
 
-mkdir -p $USERAPPL/nemo
-cd $_
+mkdir -p $USERAPPL/nemo_test3
+cd $USERAPPL/nemo_test3
 
 
 # Checkout source
@@ -31,7 +34,7 @@ svn --username $USER co http://forge.ipsl.jussieu.fr/nemo/svn/branches/2015/nemo
 
 # NEMO build
 
-cd ../NEMOGCM
+cd ./NEMOGCM
 cat > ARCH/arch-XC40-SISU.fcm <<EOF
 %NCDF_HOME           $NETCDF_DIR
 %HDF5_HOME           $HDF5_DIR
@@ -56,15 +59,22 @@ cat > ARCH/arch-XC40-SISU.fcm <<EOF
 %CFLAGS              -O0
 EOF
 
-cd CONFIG
-./makenemo -t $TMPDIR -m XC40-SISU -r GYRE -n MY_GYRE
+# Here you compile a executable for the experiment GYRE in either $TMPDIR 
 
+#cd CONFIG
+#./makenemo -t $TMPDIR -m XC40-SISU -r GYRE -n MY_GYRE
 
 # NEMO test
 #
-# For a quick test, only! For actual experiments:
+# For a quick test, only! 
+
+# cd MY_GYRE/EXP00
+# cp $TMPDIR/MY_GYRE/BLD/bin/nemo.exe .
+# aprun -n 4 nemo.exe
+
+#For actual experiments:
 # - submit jobs through SLURM batch queue system, and
 # - use $WRKDIR for input and output files
 
-# cd MY_GYRE/EXP00
-# aprun -n 4 ./opa
+
+

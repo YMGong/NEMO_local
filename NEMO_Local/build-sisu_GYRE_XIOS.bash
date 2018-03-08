@@ -2,7 +2,7 @@
 
 set -ex
 
-# NEMO 3.6 STABLE + XIOS-1 build instructions for sisu.csc.fi
+# NEMO 3.6 STABLE + XIOS-2 build instructions for sisu.csc.fi
 #
 # 2018-02-20, juha.lento@csc.fi
 
