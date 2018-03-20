@@ -1,0 +1,117 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code Snippet
+% LaTeX Template
+% Version 1.0 (14/2/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Velimir Gayevskiy (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings} % Required for inserting code snippets
+\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+\usepackage{blindtext} % for dummy text
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{Grey}{rgb}{0.6,0.6,0.6} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+
+\lstdefinestyle{Style1}{ % Define a style for your code snippet, multiple definitions can be made if, for example, you wish to insert multiple code snippets using different programming languages into one document
+language=Perl, % Detects keywords, comments, strings, functions, etc for the language specified
+backgroundcolor=\color{highlight}, % Set the background color for the snippet - useful for highlighting
+basicstyle=\footnotesize\ttfamily, % The default font size and style of the code
+breakatwhitespace=false, % If true, only allows line breaks at white space
+breaklines=true, % Automatic line breaking (prevents code from protruding outside the box)
+captionpos=b, % Sets the caption position: b for bottom; t for top
+commentstyle=\usefont{T1}{pcr}{m}{sl}\color{DarkGreen}, % Style of comments within the code - dark green courier font
+deletekeywords={}, % If you want to delete any keywords from the current language separate them by commas
+%escapeinside={\%}, % This allows you to escape to LaTeX using the character in the bracket
+firstnumber=1, % Line numbers begin at line 1
+frame=single, % Frame around the code box, value can be: none, leftline, topline, bottomline, lines, single, shadowbox
+frameround=tttt, % Rounds the corners of the frame for the top left, top right, bottom left and bottom right positions
+keywordstyle=\color{Blue}\bf, % Functions are bold and blue
+morekeywords={}, % Add any functions no included by default here separated by commas
+numbers=left, % Location of line numbers, can take the values of: none, left, right
+numbersep=10pt, % Distance of line numbers from the code box
+numberstyle=\tiny\color{Gray}, % Style used for line numbers
+rulecolor=\color{black}, % Frame border color
+showstringspaces=false, % Don't put marks in string spaces
+showtabs=false, % Display tabs in the code as lines
+stepnumber=5, % The step distance between line numbers, i.e. how often will lines be numbered
+stringstyle=\color{Purple}, % Strings are purple
+tabsize=2, % Number of spaces per tab in the code
+}
+
+% Create a command to cleanly insert a snippet with the style above anywhere in the document
+\newcommand{\insertcode}[2]{\begin{itemize}\item[]\lstinputlisting[caption=#2,label=#1,style=Style1]{#1}\end{itemize}} % The first argument is the script location/filename and the second is a caption for the listing
+
+%----------------------------------------------------------------------------------------
+\begin{document}
+\begin{titlepage}
+   \vspace*{\stretch{1.0}}
+   \begin{center}
+      \Large\textbf{Instructions for using NEMO on SISU}\\[4\baselineskip]
+      \large\textit{Yongmei Gong}\\
+      \large\textit{8 March, 2018}
+   \end{center}
+   \vspace*{\stretch{2.0}}
+\end{titlepage}
+The following instruction consist text instructions and a number of well commented bash files on how to launch basic nemo simulations. They are created for the environment of the super computer Sisu in CSC-IT center for science.\\
+\section{Get the code}
+1. Sign up for the wiki (http://forge.ipsl.jussieu.fr/nemo/wiki/Users) by sending an email containing your username (5 characters minimum length) to nemo@forge.ipsl.jussieu.fr;\\
+2. Get the conformation email then reset your password.\\
+3. Now download the source code from the distribution
+%----------------------------------------------------------------------------------------
+\insertcode{"./get_nemo_code.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
+%----------------------------------------------------------------------------------------
+\section{Declare the compilers}
+All compiler options in NEMO are controlled using files in NEMOGCM/ARCH/arch.\\
+Now we create a file to declare the compilers we use to build nemo accroding to what we have in Sisu.
+%----------------------------------------------------------------------------------------
+\insertcode{"./creat_compiler_links.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
+%----------------------------------------------------------------------------------------
+\section{Build NEMO for experiment - GYRE\_XIOS}
+Now we build an executable for the experiment GYRE\_XIOS.\\
+We use the up-to-date version of XIOS - xios\/2.0.990 instead the oldder xios\/1.0. This requires declaring the active cpp keys in the cpp\_*\_.fcm files.
+%----------------------------------------------------------------------------------------
+\insertcode{"./launch_GYRE_XIOS.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
+%----------------------------------------------------------------------------------------
+\section{Build NEMO for experiment - ORCA2\_LIM3}
+Now we build an executable for the experiment ORCA2\_LIM3.\\
+ORCA is the generic name given to global ocean configurations. Its specificity lies on the horizontal curvilinear mesh used to overcome the North Pole singularity found for geographical meshes. LIM (Louvain-la-Neuve sea-ice model, multi-category model LIM3 is used) is a thermodynamic-dynamic sea ice model specifically designed for climate studies.\\
+Similarly this requires declaring the active cpp keys in the cpp\_*\_.fcm files. And this time the experiment needs input data.
+%----------------------------------------------------------------------------------------
+\insertcode{"./launch_ORCA2_LIM3.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
+%----------------------------------------------------------------------------------------
+\section{Build NEMO for experiment - ORCA1\_LIM3}
+The difference between ORCA1 and ORCA2 is that the spacial resolution of the former is 1 degree and the latter is 2 degree. So ORCA1 has higher resolution and also needs more input data.\\
+You will need files and data in two folders: ORCA1\_cfg and ORCA1\_data to create ORCA1 experiment configuration
+%----------------------------------------------------------------------------------------
+\insertcode{"./launch_ORCA1_LIM3.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
+%----------------------------------------------------------------------------------------
+\section{Clean nemo build}
+If something has gone wrong with or has been changed for the build of nemo (nemo.exe)\\
+-	Clean a bad configuration \\
+\colorbox{Grey}{./makenemo -C YOUR\_CONFIG clean\_config}\\
+-	Uninstalling (Clean up the whole thing)\\
+\colorbox{Grey}{./makenemo -n YOUR\_BUILD clean}\\
+(e.g. ./makenemo ./makenemo -t \$TMPDIR -m XC40-SISU -n MY\_GYRE\_XIOS clean)
+\section{Check the run status and outputs}
+- If run crushes, try to find 'E R R O R' section in ocean.output 
+- Use ncview (now it is only in Petteri’s directory) to check the results *nc files
+\colorbox{Grey}{cd /homeappl/home/puotila/bin}\\
+\colorbox{Grey}{export HDF5\_DISABLE\_VERSION\_CHECK=1}\\
+\colorbox{Grey}{./ncview /YOUR\_OUTPUT\_DIR/\#_5d_00010101_00011230_grid_T.nc \&}\\
+
+\end{document}

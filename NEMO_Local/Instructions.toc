@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Get the code}{2}
+\contentsline {section}{\numberline {2}Declare the compilers}{3}
+\contentsline {section}{\numberline {3}Build NEMO for experiment - GYRE\_XIOS}{4}
+\contentsline {section}{\numberline {4}Build NEMO for experiment - ORCA2\_LIM3}{6}
+\contentsline {section}{\numberline {5}Build NEMO for experiment - ORCA1\_LIM3}{8}
+\contentsline {section}{\numberline {6}Clean nemo build}{11}
+\contentsline {section}{\numberline {7}Check the run status and outputs}{11}

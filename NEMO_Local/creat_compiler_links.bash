@@ -5,6 +5,7 @@ set -ex
 # NEMO 3.6 STABLE + XIOS-2 build instructions for sisu.csc.fi
 #
 # 2018-02-20, juha.lento@csc.fi
+# modified 2018-03-08, yongmei.gong@helsinki.fi 
 
 # NEMO is "research code", which for NEMO means that:
 # - "install" in the NEMO documentation actually is what is usually referred as "build"
@@ -13,19 +14,12 @@ set -ex
 # - https://forge.ipsl.jussieu.fr/nemo/wiki/Users/ModelInstall#ExtracttheNEMOcode
 # - https://forge.ipsl.jussieu.fr/nemo/wiki/Users/ModelInterfacing/InputsOutputs#ExtractingandinstallingXIOS
 
-# Load system I/O libraries
-# might change to xios2.0
-
-module load cray-hdf5-parallel cray-netcdf-hdf5parallel xios/2.0.990
-
-
-# Declare your NEMO code directory
-
-NEMOBUILD="$USERAPPL/nemo_test3"
 
 # NEMO build
+# All compiler options in NEMO are controlled using files in NEMOGCM/ARCH/arch-'my_arch'.fcm where 'my_arch' is the name of the computing architecture.
+# Now we create a file to declare the compilers we use to build nemo accroding to what we have in Sisu
 
-cd $NEMOBUILD/NEMOGCM
+cd $USERAPPL/nemo_test/NEMOGCM
 cat > ARCH/arch-XC40-SISU.fcm <<EOF
 %NCDF_HOME           $NETCDF_DIR
 %HDF5_HOME           $HDF5_DIR
@@ -49,22 +43,4 @@ cat > ARCH/arch-XC40-SISU.fcm <<EOF
 %CC                  cc
 %CFLAGS              -O0
 EOF
-# Declare your configuration for the simulation, e.g. the GYRE experiment 
-cd CONFIG
-#you need to add new keys in .fcm file
-sed -i 's/$/ key_nosignedzero/' GYRE_XIOS/cpp_GYRE_XIOS.fcm
-
-./makenemo -t $TMPDIR -m XC40-SISU -r GYRE_XIOS -n MY_GYRE_XIOS
-
-# NEMO test
-#
-# For a quick test, only! For actual experiments:
-# - submit jobs through SLURM batch queue system, and
-# - use $WRKDIR for input and output files
-
-# cd MY_GYRE/EXP00
-# cp $TMPDIR/MY_GYRE/BLD/bin/nemo.exe .
-# aprun -n 4 nemo.exe
-## aprun -n 4 ./opa
-
 
