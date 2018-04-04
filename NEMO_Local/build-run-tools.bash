@@ -54,12 +54,18 @@ TOOL_NAME=REBUILD_NEMO # here we build the tool called  REBUILD_NEMO
 
 # use the tool
 #
-# For a quick test, only! 
-cd REBUILD_NEMO
+cd $TOOL_NAME
+
+#
+# !!!!Manuelly change the last line 
+# from
+# ${script_dir}/rebuild_nemo.exe
+# to
+# aprun ${script_dir}/rebuild_nemo.exe 
 
 FILE_NAME=/wrk/ygong/DONOTREMOVE/NEMOEXP/N157/N157_00607360_restart_ice  #base name of the discretized files 
 NMU_PROCESS=72 #number of the partition i.e. the processors you used for NEMO
-aprun ./rebuild_nemo $FILE_NAME $NMU_PROCESS
+./rebuild_nemo $FILE_NAME $NMU_PROCESS
 
 # if you get an error like this:
 # /var//opt/cray/alps/spool/7101770/rebuild_nemo[75]: /var//opt/cray/alps/spool/7101770/rebuild_nemo.exe: not found [No such file or directory]
@@ -75,7 +81,7 @@ aprun ./rebuild_nemo $FILE_NAME $NMU_PROCESS
 # >> ls -lrt and check if there is a symbolic link created:
 # rebuild_nemo.exe -> YOUR_DIR/TOOLS/REBUILD_NEMO//BLD/bin/rebuild_nemo.exe
 # 4.If it is then 
+# aprun ./rebuild_nemo.exe
 
-aprun ./rebuild_nemo.exe
 # somehow aprun cannot find the executable automaticlly. Then you just need to launch it by hand. Then  rebuild_nemo.exe will read the info from the file nam_rebuild
 
