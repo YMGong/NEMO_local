@@ -13,9 +13,11 @@ set -ex
 # - https://forge.ipsl.jussieu.fr/nemo/wiki/Users/ModelInstall#ExtracttheNEMOcode
 # - https://forge.ipsl.jussieu.fr/nemo/wiki/Users/ModelInterfacing/InputsOutputs#ExtractingandinstallingXIOS
 
+module load cray-hdf5-parallel cray-netcdf-hdf5parallel 
 
-module load cray-hdf5-parallel cray-netcdf-hdf5parallel xios/2.0.990
-
+# craype-haswell is only used on the computational nodes
+# craype-sandybridge can be recognised on both computational nodes and log in nodes. So inoder to run small script on login nodes you need to use sandy bridge.
+module swap craype-haswell craype-sandybridge
 
 # NEMO build
 # if you don't have a file called arch-XC40-SISU.fcm in your NEMO/NEMOGCM/ARCH
@@ -52,18 +54,24 @@ TOOL_NAME=REBUILD_NEMO # here we build the tool called  REBUILD_NEMO
 
 ./maketools -m XC40-SISU -n $TOOL_NAME
 
+cd $TOOL_NAME
+
 # use the tool
 #
-# For a quick test, only! 
-cd REBUILD_NEMO
+# !!!!Manuelly change the last line 
+# from
+# ${script_dir}/rebuild_nemo.exe
+# to
+# aprun ${script_dir}/rebuild_nemo.exe 
 
 FILE_NAME=/wrk/ygong/DONOTREMOVE/NEMOEXP/N157/N157_00607360_restart_ice  #base name of the discretized files 
 NMU_PROCESS=72 #number of the partition i.e. the processors you used for NEMO
-aprun ./rebuild_nemo $FILE_NAME $NMU_PROCESS
 
-# if you get an error like this:
-# /var//opt/cray/alps/spool/7101770/rebuild_nemo[75]: /var//opt/cray/alps/spool/7101770/rebuild_nemo.exe: not found [No such file or directory]
+# Then run it
+./rebuild_nemo $FILE_NAME $NMU_PROCESS
 
+# if you get an error:
+# 
 # Do the follow
 # 1.check if there is a file called nam_rebuild created
 # 2.>>more nam_rebuild and check if it contains the correct info
@@ -74,8 +82,6 @@ aprun ./rebuild_nemo $FILE_NAME $NMU_PROCESS
 # 3. If it is then 
 # >> ls -lrt and check if there is a symbolic link created:
 # rebuild_nemo.exe -> YOUR_DIR/TOOLS/REBUILD_NEMO//BLD/bin/rebuild_nemo.exe
-# 4.If it is then 
-
-aprun ./rebuild_nemo.exe
-# somehow aprun cannot find the executable automaticlly. Then you just need to launch it by hand. Then  rebuild_nemo.exe will read the info from the file nam_rebuild
+# 4.If you use craype-haswell instead of craype-sandybridge to compile you have to change the last line in rebuld_nemo to 
+# aprun ./rebuild_nemo.exe
 
