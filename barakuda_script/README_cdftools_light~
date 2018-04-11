@@ -1,0 +1,10 @@
+#!/bin/bash
+set -ex
+
+##
+# This file tells you how to build the cdftools_light
+
+# 1. log in to taito-login4
+# 2. load modules
+module load intel python-env/intelpython3.5 hdf5-par netcdf4
+# 3.  
