@@ -26,7 +26,7 @@ NEMOBUILD="$USERAPPL/nemo_test3"
 
 # NEMO build
 
-# There is no ORCA1 experiment, which means the spaceial resolution now is 1 degree in the standard distribution therefore we need to creat it ourselves
+# There is no ORCA1 experiment, which means in the standard distribution therefore we need to creat it ourselves
  
 cd $NEMOBUILD/NEMOGCM/CONFIG
 mkdir ORCA1
@@ -35,15 +35,15 @@ cd ORCA1
 # put the cpp file here
 cp /homeappl/home/ygong/appl_sisu/NEMO/NEMO_local/ORCA1_cfg/cpp_ORCA1_LIM3.fcm .
 
-# creat a experiment dir and put all the xml and namelist files and data there
-# make sure that you have all the files (you don't need *pisces.xml files if you don't want to couple with biochemistry) and field xml files listed in context_nemo.xml
-# you can put the line 'nn_msh      =    0      !  create (=1) a mesh file or not (=0)' under &namdom in namelist_cfg. This prevents nemo to creat the mesh files, which will cause trouble when you re-launch the experiment in the same directory as they cannot be over-written
-# data includes all the data describing the boundray and initial conditions and the climatology in NetCDF format. And a samll *.dat file describing the humidity
+# Creat a experiment dir EXP00 and put all the xml and namelist files and data there
+# Make sure that you have all the file_* and field_* xml files listed in context_nemo.xml (you don't need *pisces.xml files if you don't want to couple with biochemistry).
+
+# you can put the line 'nn_msh      =    0      !  create (=1) a mesh file or not (=0)' under &namdom in the file namelist_cfg. 
+# This prevents nemo to creat the mesh files, which will cause trouble when you re-launch the experiment in the same directory as they cannot be over-written
 
 mkdir EXP00
 cp /homeappl/home/ygong/appl_sisu/NEMO/NEMO_local/ORCA1_cfg/*xml .
 cp /homeappl/home/ygong/appl_sisu/NEMO/NEMO_local/ORCA1_cfg/namelist* .
-cp /homeappl/home/ygong/appl_sisu/NEMO/NEMO_local/ORCA1_data/* .
 
 # Here you compile a executable for the experiment ORCA1 in $TMPDIR 
 cd ..
@@ -59,7 +59,14 @@ cd ORCA1
 cp $NEMOBUILD/NEMOGCM/CONFIG/ORCA1/EXP00 .
 cp $TMPDIR/MY_ORCA2_LIM3/BLD/bin/nemo.exe .
 
-# now creat a batch job script
+# Data includes all the data describing the boundray and initial conditions and the climatology in NetCDF format. And a samll *.dat file describing the humidity
+cp /homeappl/home/ygong/appl_sisu/NEMO/NEMO_local/ORCA1_data/* .
+
+# Creat a script for Using SLURM commands to execute batch jobs
+ in Sisu queue 
+# More about the SLURM commands can be found in 
+# - https://research.csc.fi/sisu-using-slurm-commands-to-execute-batch-jobs
+
 cat > batch_job.sh <<EOF
 #!/bin/bash -l
 #SBATCH -t 12:00:00

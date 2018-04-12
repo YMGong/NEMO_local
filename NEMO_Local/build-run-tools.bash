@@ -13,11 +13,13 @@ set -ex
 # - https://forge.ipsl.jussieu.fr/nemo/wiki/Users/ModelInstall#ExtracttheNEMOcode
 # - https://forge.ipsl.jussieu.fr/nemo/wiki/Users/ModelInterfacing/InputsOutputs#ExtractingandinstallingXIOS
 
+
 module load cray-hdf5-parallel cray-netcdf-hdf5parallel 
 
 # craype-haswell is only used on the computational nodes
 # craype-sandybridge can be recognised on both computational nodes and log in nodes. So inoder to run small script on login nodes you need to use sandy bridge.
 module swap craype-haswell craype-sandybridge
+
 
 # NEMO build
 # if you don't have a file called arch-XC40-SISU.fcm in your NEMO/NEMOGCM/ARCH
@@ -54,9 +56,11 @@ TOOL_NAME=REBUILD_NEMO # here we build the tool called  REBUILD_NEMO
 
 ./maketools -m XC40-SISU -n $TOOL_NAME
 
+
 cd $TOOL_NAME
 
 # use the tool
+
 #
 # !!!!Manuelly change the last line 
 # from
@@ -84,4 +88,3 @@ NMU_PROCESS=72 #number of the partition i.e. the processors you used for NEMO
 # rebuild_nemo.exe -> YOUR_DIR/TOOLS/REBUILD_NEMO//BLD/bin/rebuild_nemo.exe
 # 4.If you use craype-haswell instead of craype-sandybridge to compile you have to change the last line in rebuld_nemo to 
 # aprun ./rebuild_nemo.exe
-

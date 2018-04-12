@@ -1,0 +1,221 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2018.3.6)  8 MAR 2018 14:34
+entering extended mode
+**Instructions.tex
+
+("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
+_documentations\Instructions.tex"
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 68 languages loaded.
+(C:\HYAPP\miktex\tex\latex\base\article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(C:\HYAPP\miktex\tex\latex\base\size11.clo
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(C:\HYAPP\miktex\tex\latex\listings\listings.sty
+(C:\HYAPP\miktex\tex\latex\graphics\keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\lst@mode=\count87
+\lst@gtempboxa=\box26
+\lst@token=\toks15
+\lst@length=\count88
+\lst@currlwidth=\dimen103
+\lst@column=\count89
+\lst@pos=\count90
+\lst@lostspace=\dimen104
+\lst@width=\dimen105
+\lst@newlines=\count91
+\lst@lineno=\count92
+\lst@maxwidth=\dimen106
+
+(C:\HYAPP\miktex\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
+\c@lstnumber=\count93
+\lst@skipnumbers=\count94
+\lst@framebox=\box27
+)
+(C:\HYAPP\miktex\tex\latex\listings\listings.cfg
+File: listings.cfg 2014/03/04 1.5c listings configuration
+))
+Package: listings 2014/03/04 1.5c (Carsten Heinz)
+
+(C:\HYAPP\miktex\tex\latex\graphics\color.sty
+Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+
+(C:\HYAPP\miktex\tex\latex\00miktex\color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 137.
+
+(C:\HYAPP\miktex\tex\latex\pdftex-def\pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(C:\HYAPP\miktex\tex\generic\oberdiek\infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(C:\HYAPP\miktex\tex\generic\oberdiek\ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count95
+)
+(C:\HYAPP\miktex\tex\latex\graphics\dvipsnam.def
+File: dvipsnam.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+))
+(C:\HYAPP\miktex\tex\latex\blindtext\blindtext.sty
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+
+(C:\HYAPP\miktex\tex\latex\tools\xspace.sty
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+\c@blindtext=\count96
+\c@Blindtext=\count97
+\c@blind@countparstart=\count98
+\blind@countxx=\count99
+\blindtext@numBlindtext=\count100
+\blind@countyy=\count101
+\c@blindlist=\count102
+\c@blindlistlevel=\count103
+\c@blindlist@level=\count104
+\blind@listitem=\count105
+\c@blind@listcount=\count106
+\c@blind@levelcount=\count107
+\blind@mathformula=\count108
+\blind@Mathformula=\count109
+\c@blind@randomcount=\count110
+\c@blind@randommax=\count111
+\c@blind@pangramcount=\count112
+\c@blind@pangrammax=\count113
+)
+("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
+_documentations\Instructions.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+\c@lstlisting=\count114
+
+(C:\HYAPP\miktex\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count115
+\scratchdimen=\dimen107
+\scratchbox=\box28
+\nofMPsegments=\count116
+\nofMParguments=\count117
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count118
+\MPscratchDim=\dimen108
+\MPnumerator=\count119
+\makeMPintoPDFobject=\count120
+\everyMPtoPDFconversion=\toks17
+) [1
+
+{C:/HYAPP/miktex/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+
+ []
+
+
+("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
+_documentations\Instructions.toc")
+\tf@toc=\write3
+ [1]
+(C:\HYAPP\miktex\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2014/03/04 1.5c listings language file
+)
+("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
+_documentations\get_nemo_code.bash"
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 1.
+ (C:\HYAPP\miktex\tex\latex\psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 5.
+[2])
+Overfull \hbox (38.98991pt too wide) in paragraph at lines 82--85
+\OT1/cmr/m/n/10.95 All com-piler op-tions in NEMO are con-trolled us-ing files 
+in NEMOGCM/ARCH/arch. 
+ []
+
+
+("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
+_documentations\creat_compiler_links.bash" [3])
+("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
+_documentations\launch_GYRE_XIOS.bash" [4] [5])
+("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
+_documentations\launch_ORCA2_LIM3.bash" [6] [7])
+("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
+_documentations\launch_ORCA1_LIM3.bash" [8]
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 39.
+
+(C:\HYAPP\miktex\tex\latex\psnfss\omspcr.fd
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/sl' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 39.
+ [9]) [10]
+Overfull \hbox (21.82956pt too wide) in paragraph at lines 107--113
+\OT1/cmr/m/n/10.95 (e.g. ./mak-en-emo ./mak-en-emo -t $TM-PDIR -m XC40-SISU -n 
+MY[]GYRE[]XIOS
+ []
+
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--119
+
+ []
+
+[11]
+("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
+_documentations\Instructions.aux") ) 
+Here is how much of TeX's memory you used:
+ 3073 strings out of 493579
+ 44059 string characters out of 3147652
+ 289542 words of memory out of 3000000
+ 6509 multiletter control sequences out of 15000+200000
+ 8533 words of font info for 30 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 32i,6n,52p,390b,1877s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/HYAPP/miktex/fonts/enc/dvips/fontname/8
+r.enc}<C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/HYAPP/mikt
+ex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/HYAPP/miktex/fonts/type1/publi
+c/amsfonts/cm/cmbx9.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmr10.p
+fb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/HYAPP/miktex/fo
+nts/type1/public/amsfonts/cm/cmsy9.pfb><C:/HYAPP/miktex/fonts/type1/public/amsf
+onts/cm/cmti12.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C
+:/HYAPP/miktex/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/HYAPP/mikt
+ex/fonts/type1/urw/courier/ucrro8a.pfb>
+Output written on Instructions.pdf (12 pages, 183237 bytes).
+PDF statistics:
+ 82 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

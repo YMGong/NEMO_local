@@ -5,6 +5,7 @@ set -ex
 # NEMO 3.6 STABLE + XIOS-2 build instructions for sisu.csc.fi
 #
 # 2018-02-20, juha.lento@csc.fi
+# modified 2018-03-08, yongmei.gong@helsinki.fi
 
 # NEMO is "research code", which for NEMO means that:
 # - "install" in the NEMO documentation actually is what is usually referred as "build"
@@ -27,10 +28,11 @@ NEMOBUILD="$USERAPPL/nemo_test3"
 
 # Declare your configuration for the simulation, e.g. the GYRE_XIOS experiment 
 cd $NEMOBUILD/NEMOGCM/CONFIG
+
 #you need to add new keys in .fcm file
 sed -i 's/$/ key_nosignedzero/' GYRE_XIOS/cpp_GYRE_XIOS.fcm
 
-# Here you compile a executable for the experiment GYRE in either $TMPDIR or $WRKDIR/DONOTREMOVE
+# Here you compile a executable for the experiment GYRE_XIOS in either $TMPDIR or $WRKDIR/DONOTREMOVE
 ./makenemo -t $TMPDIR -m XC40-SISU -r GYRE_XIOS -n MY_GYRE_XIOS
 
 # NEMO test
@@ -44,9 +46,17 @@ sed -i 's/$/ key_nosignedzero/' GYRE_XIOS/cpp_GYRE_XIOS.fcm
 
 # For actual experiments:
 # Copy the experiments in $WRKDIR/DONOTREMOVE
-cp MY_GYRE_XIOS/ $WRKDIR/DONOTREMOVE/
-cd $WRKDIR/DONOTREMOVE/MY_GYRE_XIOS/
+cp GYRE_XIOS/ $WRKDIR/DONOTREMOVE/MY_GYRE_XIOS/
+cd $WRKDIR/DONOTREMOVE/MY_GYRE_XIOS/EXP00
+
+# Copy the executable to the EXP00 directory
 cp $TMPDIR/MY_GYRE_XIOS/BLD/bin/nemo.exe .
+
+# Creat a script for Using SLURM commands to execute batch jobs
+ in Sisu queue 
+# More about the SLURM commands can be found in 
+# - https://research.csc.fi/sisu-using-slurm-commands-to-execute-batch-jobs
+
 cat > batch_job.sh <<EOF
 #!/bin/bash -l
 #SBATCH -t 00:29:00
@@ -59,4 +69,5 @@ cat > batch_job.sh <<EOF
 aprun -n 4 nemo.exe
 EOF
 
+# Then submit the job in the queue
 sbatch batch_job.sh

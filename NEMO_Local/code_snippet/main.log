@@ -1,0 +1,136 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2018.3.6)  6 MAR 2018 14:00
+entering extended mode
+**main.tex
+(J:\Projects\NEMO_Local\code_snippet\main.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 68 languages loaded.
+(C:\HYAPP\miktex\tex\latex\base\article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(C:\HYAPP\miktex\tex\latex\base\size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(C:\HYAPP\miktex\tex\latex\listings\listings.sty
+(C:\HYAPP\miktex\tex\latex\graphics\keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\lst@mode=\count87
+\lst@gtempboxa=\box26
+\lst@token=\toks15
+\lst@length=\count88
+\lst@currlwidth=\dimen103
+\lst@column=\count89
+\lst@pos=\count90
+\lst@lostspace=\dimen104
+\lst@width=\dimen105
+\lst@newlines=\count91
+\lst@lineno=\count92
+\lst@maxwidth=\dimen106
+
+(C:\HYAPP\miktex\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
+\c@lstnumber=\count93
+\lst@skipnumbers=\count94
+\lst@framebox=\box27
+)
+(C:\HYAPP\miktex\tex\latex\listings\listings.cfg
+File: listings.cfg 2014/03/04 1.5c listings configuration
+))
+Package: listings 2014/03/04 1.5c (Carsten Heinz)
+
+(C:\HYAPP\miktex\tex\latex\graphics\color.sty
+Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+
+(C:\HYAPP\miktex\tex\latex\00miktex\color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 137.
+
+(C:\HYAPP\miktex\tex\latex\pdftex-def\pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(C:\HYAPP\miktex\tex\generic\oberdiek\infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(C:\HYAPP\miktex\tex\generic\oberdiek\ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count95
+)
+(C:\HYAPP\miktex\tex\latex\graphics\dvipsnam.def
+File: dvipsnam.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+))
+(J:\Projects\NEMO_Local\code_snippet\main.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+\c@lstlisting=\count96
+
+(C:\HYAPP\miktex\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count97
+\scratchdimen=\dimen107
+\scratchbox=\box28
+\nofMPsegments=\count98
+\nofMParguments=\count99
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count100
+\MPscratchDim=\dimen108
+\MPnumerator=\count101
+\makeMPintoPDFobject=\count102
+\everyMPtoPDFconversion=\toks17
+) (C:\HYAPP\miktex\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2014/03/04 1.5c listings language file
+)
+(J:\Projects\NEMO_Local\code_snippet\Scripts/example.pl
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 1.
+
+(C:\HYAPP\miktex\tex\latex\psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)) [1
+
+{C:/HYAPP/miktex/pdftex/config/pdftex.map}] (J:\Projects\NEMO_Local\code_snippe
+t\main.aux) ) 
+Here is how much of TeX's memory you used:
+ 2698 strings out of 493579
+ 37316 string characters out of 3147652
+ 145456 words of memory out of 3000000
+ 6166 multiletter control sequences out of 15000+200000
+ 5321 words of font info for 20 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 32i,5n,52p,264b,1567s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/HYAPP/miktex/fonts/enc/dvips/fontname/8r.enc}<C:/HYAPP/miktex/
+fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/HYAPP/miktex/fonts/type1/public/am
+sfonts/cm/cmr10.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmr5.pfb><C
+:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/HYAPP/miktex/fonts/
+type1/public/amsfonts/latxfont/lcircle1.pfb><C:/HYAPP/miktex/fonts/type1/urw/co
+urier/ucrro8a.pfb>
+Output written on main.pdf (1 page, 52346 bytes).
+PDF statistics:
+ 31 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
