@@ -6,7 +6,7 @@
 if $leg_is_restart
 then
     nemo_restart=".TRUE."
-    nemo_rst_ctl=1
+    nemo_rst_ctl=1  # 0 changed 03042018 by ygong
 
 elif $(has_config nemo:start_from_restart)
 then
@@ -768,7 +768,7 @@ cat << EOF
 !-----------------------------------------------------------------------
    ln_mle    = .true.      ! (T) use the Mixed Layer Eddy (MLE) parameterisation
    rn_ce     = 0.06        ! magnitude of the MLE (typical value: 0.06 to 0.08)
-   nn_mle    = 0           ! MLE type: =0 standard Fox-Kemper ; =1 new formulation
+   nn_mle    = 1           ! MLE type: =0 standard Fox-Kemper ; =1 new formulation
    rn_lf     = 5.e+3       ! typical scale of mixed layer front (meters)                      (case rn_mle=0)
    rn_time   = 172800.     ! time scale for mixing momentum across the mixed layer (seconds)  (case rn_mle=0)
    rn_lat    = 20.         ! reference latitude (degrees) of MLE coef.                        (case rn_mle=1)

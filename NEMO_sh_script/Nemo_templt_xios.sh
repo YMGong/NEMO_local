@@ -1,11 +1,13 @@
 #!//bin/bash -l 
 
 #SBATCH -t 02:00:00
-#SBATCH -J N101.sh
+#SBATCH -J RUN_NAME_XIOS_PROCES.sh  ## remember to name the job as the name of this script
 #SBATCH -p small
 #SBATCH -o output_%j.txt
 #SBATCH -e errors_%j.txt
-#SBATCH -N 4
+#SBATCH -N 6
+
+sleep 5s
 
 ## the last line is to 
 
@@ -35,13 +37,11 @@ ${pre_load_modules_cmd}
 config="nemo lim3 xios:detached"
 
 # Experiment name (exactly 4 letters!)
-exp_name=N103
-nem_forcing_set=DFS5.2
-nem_forcing_dir=/wrk/puotila/DONOTREMOVE/${nem_forcing_set}
+exp_name=RUN_NAMEXIOS_PROCES
 
 # Simulation start and end date. Use any (reasonable) syntax you want.
 run_start_date="1990-01-01"
-run_end_date="${run_start_date} + 4 months" # 
+run_end_date="${run_start_date} + 12 months" # 
 
 # Set $force_run_from_scratch to 'true' if you want to force this run to start
 # from scratch, possibly ignoring any restart files present in the run
@@ -104,9 +104,9 @@ esac
 
 # This is only needed if the experiment is started from an existing set of NEMO
 # restart files
-nem_restart_file_path=${start_dir}/nemo-rst #!!! need to be changed
+nem_restart_file_path=${start_dir}/nemo-rst
 
-nem_restart_offset=0 #-607360
+nem_restart_offset=0
 
 nem_res_hor=$(echo ${nem_grid} | sed 's:ORCA\([0-9]\+\)L[0-9]\+:\1:')
 
@@ -117,7 +117,7 @@ has_config pisces         && nem_config_name=${nem_grid}_LIM3_PISCES_standalone
 has_config pisces:offline && nem_config_name=${nem_grid}_OFF_PISCES
 
 nem_exe_file=${nem_src_dir}/${nem_config_name}/BLD/bin/nemo.exe 
-nem_numproc=72 #48
+nem_numproc=72
 
 # -----------------------------------------------------------------------------
 # *** XIOS configuration
@@ -126,7 +126,7 @@ nem_numproc=72 #48
 # Now we preload xios
 xio_exe_file=$(which xios_server.exe)
 
-xio_numproc=2 #0  #??? don't really know, should change 0 to some integer if xios is not detached ??? 
+xio_numproc=XIOS_PROCES #0  #??? don't really know, should change 0 to some integer if xios is not detached ??? 
 
 # -----------------------------------------------------------------------------
 # *** atmospheric model configuration
@@ -309,46 +309,28 @@ do
 
         # Write fake file for previous fresh water budget adjustment (nn_fwb==2 in namelist)
         echo "                               0  0.0000000000000000E+00  0.0000000000000000E+00" > EMPave_old.dat
-	
 
-        # -------------------------------------------------------------------------
-        # *** Link atmospheric forcing files for this leg
-        # -------------------------------------------------------------------------
-	case ${nem_forcing_set} in
-	    DFS5.2)
-		for v in u10 v10 t2 q2 precip snow radlw radsw; do
-		    for i in $(eval echo {$leg_start_date_yyyy..$leg_end_date_yyyy}); do
-			ln -fs ${nem_forcing_dir}/drowned_${v}_DFS5.2_y${i}.nc ./${v}_y${i}.nc
-		    done
-		done
-                # Link DFS52 weight files for corresponding grid
-                # Weight files for forcing
-		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bilinear.nc .
-		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bicubic.nc .
-		;;
-	    *)
-                # Link NEMO CoreII forcing files (only set supported out-of-the-box)
-		for v in u_10 v_10 t_10 q_10 ncar_precip ncar_rad
-		do
-		    f="${ini_data_dir}/nemo/forcing/CoreII/${v}.15JUNE2009_fill.nc"
-		    [ -f "$f" ] && ln -s $f
-		done
-                # Link CoreII weight files for corresponding grid
-		ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bilinear.nc
-		ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bicubic.nc
-		;;
-	esac
+        # Link NEMO CoreII forcing files (only set supported out-of-the-box)
+        for v in u_10 v_10 t_10 q_10 ncar_precip ncar_rad
+        do
+            f="${ini_data_dir}/nemo/forcing/CoreII/${v}.15JUNE2009_fill.nc"
+            [ -f "$f" ] && ln -s $f
+        done
+
+        # Link CoreII weight files for corresponding grid
+        ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bilinear.nc
+        ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bicubic.nc
 
         # XIOS files
-        . ${ctrl_file_dir}/iodef.xml.sh > iodef.xml 
-	#ln -s ${ctrl_file_dir}/iodef.xml
+        # ${ctrl_file_dir}/iodef.xml.sh > iodef.xml #changed 150318 by Ygong
+	ln -s ${ctrl_file_dir}/iodef.xml
         ln -s ${ctrl_file_dir}/context_nemo.xml
         ln -s ${ctrl_file_dir}/domain_def_nemo.xml
         ln -s ${ctrl_file_dir}/field_def_nemo-lim.xml
         ln -s ${ctrl_file_dir}/field_def_nemo-opa.xml
         ln -s ${ctrl_file_dir}/field_def_nemo-pisces.xml
-        ln -s ${ctrl_file_dir}/file_def_nemo-lim3.xml file_def_nemo-lim.xml # 
-	#ln -s ${ctrl_file_dir}/file_def_nemo-lim.xml
+        #ln -s ${ctrl_file_dir}/file_def_nemo-lim3.xml file_def_nemo-lim.xml
+	ln -s ${ctrl_file_dir}/file_def_nemo-lim.xml
         ln -s ${ctrl_file_dir}/file_def_nemo-opa.xml
         ln -s ${ctrl_file_dir}/file_def_nemo-pisces.xml
 
@@ -443,7 +425,7 @@ do
     # -------------------------------------------------------------------------
 
     # Use the launch function from the platform configuration file
-    
+    #??? maybe now use launch_oce???
     t1=$(date +%s)
     
     launch \
@@ -545,7 +527,6 @@ done # loop over legs
 # *** Platform dependent finalising of the run
 # -----------------------------------------------------------------------------
 finalise \
-   $SLURM_JOB_NAME #give the name of the current shell script
+   $SLURM_JOB_NAME #give the name of the job. remember to name the job as the name of this script
 
 exit 0 
-

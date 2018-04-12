@@ -43,5 +43,7 @@ cat << EOF
 !------------------------------------------------------------------------------
 &namiceitd     !   Ice discretization
 !------------------------------------------------------------------------------
+   nn_catbnd      =    3           !  computation of ice category boundaries based on
+                                   !  prescribed thickness limits by UCL/CICE
 /
 EOF

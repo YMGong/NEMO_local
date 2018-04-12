@@ -1,13 +1,14 @@
-#!//bin/bash -l 
+#!//bin/bash -l
 
-#SBATCH -t 02:00:00
-#SBATCH -J N101.sh
-#SBATCH -p small
-#SBATCH -o output_%j.txt
-#SBATCH -e errors_%j.txt
-#SBATCH -N 4
+#SBATCH -t 08:00:00
+#SBATCH -J E101
+#SBATCH -o E101_out.%j
+#SBATCH -e E101_err.%j
+#SBATCH -p small_long
+#SBATCH -N 3
 
-## the last line is to 
+#module load cray-hdf5-parallel cray-netcdf-hdf5parallel
+module load xios
 
 set -ue
 
@@ -19,14 +20,6 @@ source ./librunscript.sh
 # =============================================================================
 
 # -----------------------------------------------------------------------------
-# *** Preload modules in sisu 
-# -----------------------------------------------------------------------------
-
-pre_load_modules_cmd="module load cray-hdf5-parallel cray-netcdf-hdf5parallel xios/2.0.990"
-${pre_load_modules_cmd}
-
-
-# -----------------------------------------------------------------------------
 # *** General configuration
 # -----------------------------------------------------------------------------
 
@@ -35,54 +28,45 @@ ${pre_load_modules_cmd}
 config="nemo lim3 xios:detached"
 
 # Experiment name (exactly 4 letters!)
-exp_name=N103
+# Let E1 stand for ESA project runs
+exp_name=E101
 nem_forcing_set=DFS5.2
-nem_forcing_dir=/wrk/puotila/DONOTREMOVE/${nem_forcing_set}
+nem_forcing_dir=${WRKDIR}/DONOTREMOVE/${nem_forcing_set}
 
 # Simulation start and end date. Use any (reasonable) syntax you want.
-run_start_date="1990-01-01"
-run_end_date="${run_start_date} + 4 months" # 
+run_start_date="1980-01-01"
+run_end_date="${run_start_date} + 36 years"
 
 # Set $force_run_from_scratch to 'true' if you want to force this run to start
 # from scratch, possibly ignoring any restart files present in the run
 # directory. Leave set to 'false' otherwise.
 # NOTE: If set to 'true' the run directory $run_dir is cleaned!
-force_run_from_scratch=false #true
+force_run_from_scratch=false
 
 # Resolution
 nem_grid=ORCA1L75
 
 # Restart frequency. Use any (reasonable) number and time unit you want.
 # For runs without restart, leave this variable empty
-# Normally you need it if you want to resubmit jobs through the function Finalize
-rst_freq="1 month"
+rst_freq="1 year"
 
-# Number of restart legs to be run in one job
-run_num_legs=2
+# Number of restart legs to be run in one go
+run_num_legs=35
 
 # Directories
-
-# Tells where to find the restart files if the first round of simulation is restarted from some other files.
-# And also tells config file to find the run script to resubmit the job etc
 start_dir=${PWD}
-
-# Tells where to find namelist and xml etc. files
-ctrl_file_dir=${USERAPPL}/NEMO/NEMO_local/ORCA1_cfg
-
-# Tells where to find nemo executable
-nem_src_dir=${WRKDIR}/DONOTREMOVE/NEMOEXP
+ctrl_file_dir=${start_dir}/ctrl
 
 # Architecture
-#build_arch=my_ecconf   #?? it has been used anywhere ??
+build_arch=XC40-SISU
 
-# This file is in the run dir and used to store information about restarts 
-# If the first run leg is not restarting from anything it will be created in the run dir
-nem_info_file="nem.info"   #?? should we change the name of the variable to avoid confusion ??
+# This file is used to store information about restarts
+ece_info_file="nemo.info"
 
 # -----------------------------------------------------------------------------
 # *** Read platform dependent configuration
 # -----------------------------------------------------------------------------
-source ./nemconf.cfg  # read function configure from ecconf.cfg ?? probably need another name to avoid confusio??
+source ./ecconf.cfg
 
 configure
 
@@ -91,6 +75,7 @@ configure
 # -----------------------------------------------------------------------------
 case "${nem_grid}" in
 
+    ORCA2L*)   nem_time_step_sec=5760; lim_time_step_sec=5760 ;;
     ORCA1L*)   nem_time_step_sec=2700; lim_time_step_sec=2700 ;;
     ORCA025L*) nem_time_step_sec=900 ; lim_time_step_sec=900  ;;
 
@@ -104,37 +89,30 @@ esac
 
 # This is only needed if the experiment is started from an existing set of NEMO
 # restart files
-nem_restart_file_path=${start_dir}/nemo-rst #!!! need to be changed
+nem_restart_file_path=${start_dir}/nemo-rst
 
-nem_restart_offset=0 #-607360
+nem_restart_offset=0
 
 nem_res_hor=$(echo ${nem_grid} | sed 's:ORCA\([0-9]\+\)L[0-9]\+:\1:')
 
 # Pick correct NEMO configuration, which is one of:
 #   NEMO standalone, NEMO+PISCES-standaone, PISCES-offline
-                             nem_config_name=${nem_grid}_LIM3_standalone
+                             nem_config_name=${nem_grid}_LIM3_UCL_standalone
 has_config pisces         && nem_config_name=${nem_grid}_LIM3_PISCES_standalone
 has_config pisces:offline && nem_config_name=${nem_grid}_OFF_PISCES
 
-nem_exe_file=${nem_src_dir}/${nem_config_name}/BLD/bin/nemo.exe 
-nem_numproc=72 #48
+nem_exe_file=${ecearth_src_dir}/nemo-3.6/CONFIG/${nem_config_name}/BLD/bin/nemo.exe
+
+nem_numproc=48
 
 # -----------------------------------------------------------------------------
 # *** XIOS configuration
 # -----------------------------------------------------------------------------
 
-# Now we preload xios
+#xio_exe_file=${ecearth_src_dir}/xios-2/bin/xios_server.exe
 xio_exe_file=$(which xios_server.exe)
 
-xio_numproc=2 #0  #??? don't really know, should change 0 to some integer if xios is not detached ??? 
-
-# -----------------------------------------------------------------------------
-# *** atmospheric model configuration
-# -----------------------------------------------------------------------------
-
-#ifs_exe_file=amt_test.exe
-#ifs_numproc=3
-#ifs_key="-v ecmwf -e"
+xio_numproc=1
 
 # =============================================================================
 # *** END of User configuration
@@ -168,14 +146,14 @@ do
 
     # Check for restart information file and set the current leg start date
     #   Ignore restart information file if force_run_from_scratch is true
-    if ${force_run_from_scratch} || ! [ -r ${nem_info_file} ]
+    if ${force_run_from_scratch} || ! [ -r ${ece_info_file} ]
     then
         leg_is_restart=false
         leg_start_date=${run_start_date}
         leg_number=1
     else
         leg_is_restart=true
-        . ./${nem_info_file}
+        . ./${ece_info_file}
         leg_start_date=${leg_end_date}
         leg_number=$((leg_number+1))
     fi
@@ -247,7 +225,7 @@ do
         # *** Files needed for NEMO (linked)
         # ---------------------------------------------------------------------
 
-        # Link initialisation files for matching ORCA grid ?? put these files somewhere? rundir? 
+        # Link initialisation files for matching ORCA grid
         for f in \
             bathy_meter.nc coordinates.nc \
             ahmcoef.nc \
@@ -309,46 +287,15 @@ do
 
         # Write fake file for previous fresh water budget adjustment (nn_fwb==2 in namelist)
         echo "                               0  0.0000000000000000E+00  0.0000000000000000E+00" > EMPave_old.dat
-	
-
-        # -------------------------------------------------------------------------
-        # *** Link atmospheric forcing files for this leg
-        # -------------------------------------------------------------------------
-	case ${nem_forcing_set} in
-	    DFS5.2)
-		for v in u10 v10 t2 q2 precip snow radlw radsw; do
-		    for i in $(eval echo {$leg_start_date_yyyy..$leg_end_date_yyyy}); do
-			ln -fs ${nem_forcing_dir}/drowned_${v}_DFS5.2_y${i}.nc ./${v}_y${i}.nc
-		    done
-		done
-                # Link DFS52 weight files for corresponding grid
-                # Weight files for forcing
-		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bilinear.nc .
-		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bicubic.nc .
-		;;
-	    *)
-                # Link NEMO CoreII forcing files (only set supported out-of-the-box)
-		for v in u_10 v_10 t_10 q_10 ncar_precip ncar_rad
-		do
-		    f="${ini_data_dir}/nemo/forcing/CoreII/${v}.15JUNE2009_fill.nc"
-		    [ -f "$f" ] && ln -s $f
-		done
-                # Link CoreII weight files for corresponding grid
-		ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bilinear.nc
-		ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bicubic.nc
-		;;
-	esac
 
         # XIOS files
-        . ${ctrl_file_dir}/iodef.xml.sh > iodef.xml 
-	#ln -s ${ctrl_file_dir}/iodef.xml
+        . ${ctrl_file_dir}/iodef.xml.sh > iodef.xml
         ln -s ${ctrl_file_dir}/context_nemo.xml
         ln -s ${ctrl_file_dir}/domain_def_nemo.xml
         ln -s ${ctrl_file_dir}/field_def_nemo-lim.xml
         ln -s ${ctrl_file_dir}/field_def_nemo-opa.xml
         ln -s ${ctrl_file_dir}/field_def_nemo-pisces.xml
-        ln -s ${ctrl_file_dir}/file_def_nemo-lim3.xml file_def_nemo-lim.xml # 
-	#ln -s ${ctrl_file_dir}/file_def_nemo-lim.xml
+        ln -s ${ctrl_file_dir}/file_def_nemo-lim3.xml file_def_nemo-lim.xml
         ln -s ${ctrl_file_dir}/file_def_nemo-opa.xml
         ln -s ${ctrl_file_dir}/file_def_nemo-pisces.xml
 
@@ -384,6 +331,33 @@ do
         rm -f ${exp_name}_??_????????_????????_{grid_U,grid_V,grid_W,grid_T,icemod,SBC,scalar,SBC_scalar,diad_T}.nc
 
     fi # ! $leg_is_restart
+    # -------------------------------------------------------------------------
+    # *** Link atmospheric forcing files for this leg
+    # -------------------------------------------------------------------------
+    case ${nem_forcing_set} in
+    DFS5.2)
+      for v in u10 v10 t2 q2 precip snow radlw radsw; do
+       for i in $(eval echo {$leg_start_date_yyyy..$leg_end_date_yyyy}); do
+         ln -fs ${nem_forcing_dir}/drowned_${v}_DFS5.2_y${i}.nc ./${v}_y${i}.nc
+       done
+      done
+      # Link DFS52 weight files for corresponding grid
+      # Weight files for forcing
+      ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bilinear.nc .
+      ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bicubic.nc .
+         ;;
+    *)
+      # Link NEMO CoreII forcing files (only set supported out-of-the-box)
+      for v in u_10 v_10 t_10 q_10 ncar_precip ncar_rad
+      do
+          f="${ini_data_dir}/nemo/forcing/CoreII/${v}.15JUNE2009_fill.nc"
+          [ -f "$f" ] && ln -s $f
+      done
+      # Link CoreII weight files for corresponding grid
+      ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bilinear.nc
+      ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bicubic.nc
+         ;;
+    esac
 
     # -------------------------------------------------------------------------
     # *** Create some control files
@@ -392,7 +366,7 @@ do
     # Remove land grid-points
     if $(has_config nemo:elpin)
     then
-        jpns=($(${nemctrl_scr_dir}/util/ELPiN/ELPiNv2.cmd ${nem_numproc}))
+        jpns=($(${ecearth_src_dir}/util/ELPiN/ELPiNv2.cmd ${nem_numproc}))
         info "nemo domain decompostion from ELpIN: ${jpns[@]}"
         nem_numproc=${jpns[0]}
         nem_jpni=${jpns[1]}
@@ -401,14 +375,18 @@ do
         info "nemo original domain decomposition (not using ELPiN)"
     fi
 
-    # NEMO and LIM namelists 
+    # NEMO and LIM namelists
+    . ${ctrl_file_dir}/namelist.nemo.ref.sh                        > namelist_ref
+    case ${nem_forcing_set} in
+    DFS5.2)
+        . ${ctrl_file_dir}/namelist.nemo-${nem_grid}-${nem_forcing_set}-standalone.cfg.sh > namelist_cfg ;;
+    *)
+        . ${ctrl_file_dir}/namelist.nemo-${nem_grid}-standalone.cfg.sh > namelist_cfg ;;
+    esac
+    . ${ctrl_file_dir}/namelist.lim3.ref.sh                        > namelist_ice_ref
+    . ${ctrl_file_dir}/namelist.lim3-${nem_grid}.E101.cfg.sh       > namelist_ice_cfg
 
-   . ${ctrl_file_dir}/namelist.nemo.ref.sh                        > namelist_ref
-   . ${ctrl_file_dir}/namelist.nemo-${nem_grid}-standalone.cfg.sh > namelist_cfg
-   . ${ctrl_file_dir}/namelist.lim3.ref.sh                        > namelist_ice_ref
-   . ${ctrl_file_dir}/namelist.lim3-${nem_grid}.cfg.sh            > namelist_ice_cfg
-
-    # NEMO/TOP+PISCES namelists # !!! need to change this in the future
+    # NEMO/TOP+PISCES namelists
     has_config pisces && . ${ctrl_file_dir}/namelist.nemo.top.ref.sh    > namelist_top_ref
     has_config pisces && . ${ctrl_file_dir}/namelist.nemo.top.cfg.sh    > namelist_top_cfg
     has_config pisces && . ${ctrl_file_dir}/namelist.nemo.pisces.ref.sh > namelist_pisces_ref
@@ -437,20 +415,16 @@ do
         [ -h restart_ice.nc ] && rm restart_ice.nc
     fi
 
-    ### !!!! okay this needs to be changed!!!!
     # -------------------------------------------------------------------------
     # *** Start the run
     # -------------------------------------------------------------------------
-
     # Use the launch function from the platform configuration file
-    
     t1=$(date +%s)
-    
-    launch \
-        ${xio_numproc} ${xio_exe_file} -- \
-        ${nem_numproc} ${nem_exe_file} #-- \
-	#${ifs_numproc} ${ifs_exe_file} ${ifs_key} $exp_name
-    #aprun -n ${nem_numproc} ${nem_exe_file}: 
+    #launch \
+    #    ${xio_numproc} ${xio_exe_file} -- \
+    #    ${nem_numproc} ${nem_exe_file}
+    #aprun -n ${nem_numproc} $(basename ${nem_exe_file}) : -n ${xio_numproc} $(basename ${xio_exe_file})
+    aprun -n ${nem_numproc} ./$(basename ${nem_exe_file}) : -n ${xio_numproc} ./$(basename ${xio_exe_file})
     t2=$(date +%s)
 
     tr=$(date -d "0 -$t1 sec + $t2 sec" +%T)
@@ -489,24 +463,28 @@ do
         done
     done
 
+    test -f EMPave_old.dat && mv EMPave_old.dat $outdir/
+    test -f EMPave.dat && mv EMPave.dat EMPave_old.dat
     # -------------------------------------------------------------------------
     # *** Move NEMO restart files to archive directory
     # -------------------------------------------------------------------------
-        
-    outdir="restart/nemo/$(printf %03d $((leg_number)))"
-    mkdir -p ${outdir}
+    if $leg_is_restart
+    then
+        outdir="restart/nemo/$(printf %03d $((leg_number)))"
+        mkdir -p ${outdir}
 
-    ns=$(printf %08d $(( leg_start_sec / nem_time_step_sec - nem_restart_offset )))
+        ns=$(printf %08d $(( leg_start_sec / nem_time_step_sec - nem_restart_offset )))
 
-    for f in oce ice trc
-    do
-	for i in ${exp_name}_${ns}_restart_${f}_????.nc
+	for f in oce ice trc
 	do
-	    test -f $i && mv $i $outdir/
-	done 
-    done
+	    for i in ${exp_name}_${ns}_restart_${f}_????.nc
+	    do
+		test -f $i && mv $i $outdir/
+	    done 
+	done
 
-  
+    fi
+
     # -------------------------------------------------------------------------
     # *** Move log files to archive directory
     # -------------------------------------------------------------------------
@@ -523,18 +501,18 @@ do
     # *** Write the restart control file
     # -------------------------------------------------------------------------
 
-    # Now nem_info_file is created in the run dir
+
     # Compute CPMIP performance
     sypd="$(cpmip_sypd $leg_length_sec $(($t2 - $t1)))"
     chpsy="$(cpmip_chpsy  $leg_length_sec $(($t2 - $t1)) $(($nem_numproc + $xio_numproc)))"
 
-    echo "#"                                             | tee -a ${nem_info_file}
+    echo "#"                                             | tee -a ${ece_info_file}
     echo "# Finished leg at `date '+%F %T'` after ${tr} (hh:mm:ss)" \
-                                                         | tee -a ${nem_info_file}
-    echo "# CPMIP performance: $sypd SYPD   $chpsy CHPSY"| tee -a ${nem_info_file}
-    echo "leg_number=${leg_number}"                      | tee -a ${nem_info_file}
-    echo "leg_start_date=\"${leg_start_date}\""          | tee -a ${nem_info_file}
-    echo "leg_end_date=\"${leg_end_date}\""              | tee -a ${nem_info_file}
+                                                         | tee -a ${ece_info_file}
+    echo "# CPMIP performance: $sypd SYPD   $chpsy CHPSY"| tee -a ${ece_info_file}
+    echo "leg_number=${leg_number}"                      | tee -a ${ece_info_file}
+    echo "leg_start_date=\"${leg_start_date}\""          | tee -a ${ece_info_file}
+    echo "leg_end_date=\"${leg_end_date}\""              | tee -a ${ece_info_file}
 
     # Need to reset force_run_from_scratch in order to avoid destroying the next leg
     force_run_from_scratch=false
@@ -544,8 +522,6 @@ done # loop over legs
 # -----------------------------------------------------------------------------
 # *** Platform dependent finalising of the run
 # -----------------------------------------------------------------------------
-finalise \
-   $SLURM_JOB_NAME #give the name of the current shell script
+finalise
 
-exit 0 
-
+exit 0
