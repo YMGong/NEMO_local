@@ -63,7 +63,7 @@ tabsize=2, % Number of spaces per tab in the code
    \begin{center}
       \Large\textbf{Instructions for using NEMO on SISU}\\[4\baselineskip]
       \large\textit{Yongmei Gong}\\
-      \large\textit{8 March, 2018}
+      \large\textit{12 April, 2018}
    \end{center}
    \vspace*{\stretch{2.0}}
 \end{titlepage}
@@ -71,50 +71,83 @@ tabsize=2, % Number of spaces per tab in the code
 The following instruction consist text instructions and a number of well commented bash files on how to launch basic nemo simulations. They are created for the environment of the super computer Sisu in CSC-IT center for science.\\
 \tableofcontents
 \newpage
-\section{Get the code}
+\section{Build and use NEMO on Sisu}
+\subsection{Get the code}
 1. Sign up for the wiki (http://forge.ipsl.jussieu.fr/nemo/wiki/Users) by sending an email containing your username (5 characters minimum length) to nemo@forge.ipsl.jussieu.fr;\\
 2. Get the conformation email then reset your password.\\
 3. Now download the source code from the distribution
 %----------------------------------------------------------------------------------------
 \insertcode{"./get_nemo_code.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
 %----------------------------------------------------------------------------------------
-\section{Declare the compilers}
+\subsection{Declare the compilers}
 All compiler options in NEMO are controlled using files in NEMOGCM/ARCH/arch.\\
 Now we create a file to declare the compilers we use to build nemo accroding to what we have in Sisu.
 %----------------------------------------------------------------------------------------
 \insertcode{"./creat_compiler_links.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
 %----------------------------------------------------------------------------------------
-\section{Build NEMO for experiment - GYRE\_XIOS}
+\subsection{Build NEMO for experiment - GYRE\_XIOS}
 Now we build an executable for the experiment GYRE\_XIOS.\\
 We use the up-to-date version of XIOS - xios\/2.0.990 instead the oldder xios\/1.0. This requires declaring the active cpp keys in the cpp\_*\_.fcm files.
 %----------------------------------------------------------------------------------------
 \insertcode{"./launch_GYRE_XIOS.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
 %----------------------------------------------------------------------------------------
-\section{Build NEMO for experiment - ORCA2\_LIM3}
+\subsection{Build NEMO for experiment - ORCA2\_LIM3}
 Now we build an executable for the experiment ORCA2\_LIM3.\\
 ORCA is the generic name given to global ocean configurations. Its specificity lies on the horizontal curvilinear mesh used to overcome the North Pole singularity found for geographical meshes. LIM (Louvain-la-Neuve sea-ice model, multi-category model LIM3 is used) is a thermodynamic-dynamic sea ice model specifically designed for climate studies.\\
 Similarly this requires declaring the active cpp keys in the cpp\_*\_.fcm files. And this time the experiment needs input data.
 %----------------------------------------------------------------------------------------
 \insertcode{"./launch_ORCA2_LIM3.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
 %----------------------------------------------------------------------------------------
-\section{Build NEMO for experiment - ORCA1\_LIM3}
+\subsection{Build NEMO for experiment - ORCA1\_LIM3}
 The difference between ORCA1 and ORCA2 is that the spacial resolution of the former is 1 degree and the latter is 2 degree. So ORCA1 has higher resolution and also needs more input data.\\
 You will need files and data in two folders: ORCA1\_cfg and ORCA1\_data to create ORCA1 experiment configuration
 %----------------------------------------------------------------------------------------
 \insertcode{"./launch_ORCA1_LIM3.bash"}{} % The first argument is the script location/filename and the second is a caption for the listing
 %----------------------------------------------------------------------------------------
-\section{Clean nemo build}
+\subsection{Use nemo for long transient runs}
+Note below is just a template file. To be able to run it you need additional files which you can get by: \\
+\colorbox{Grey}{\texttt{>>}git clone https://version.helsinki.fi/hydro\_geophysics/nemo\_scripts.git} \\
+However you need to get the permission to access. \\
+Then you need to ask data from Petteri.\\
+\insertcode{"../NEMO_sh_script/N101.sh"}{} 
+\subsection{Clean nemo build}
 If something has gone wrong with or has been changed for the build of nemo (nemo.exe)\\
 -	Clean a bad configuration \\
-\colorbox{Grey}{./makenemo -C YOUR\_CONFIG clean\_config}\\
+\colorbox{Grey}{\texttt{>>}./makenemo -C YOUR\_CONFIG clean\_config}\\
 -	Uninstalling (Clean up the whole thing)\\
-\colorbox{Grey}{./makenemo -n YOUR\_BUILD clean}\\
-(e.g. ./makenemo ./makenemo -t \$TMPDIR -m XC40-SISU -n MY\_GYRE\_XIOS clean)
-\section{Check the run status and outputs}
+\colorbox{Grey}{\texttt{>>}./makenemo -n YOUR\_BUILD clean}\\
+(e.g. \colorbox{Grey}{\texttt{>>}./makenemo ./makenemo -t \$TMPDIR -m XC40-SISU -n MY\_GYRE\_XIOS clean})
+\subsection{Check the run status and outputs}
 - If run crushes, try to find 'E R R O R' section in ocean.output 
 - Use ncview (now it is only in Petteri’s directory) to check the results *nc files
-\colorbox{Grey}{cd /homeappl/home/puotila/bin}\\
-\colorbox{Grey}{export HDF5\_DISABLE\_VERSION\_CHECK=1}\\
-\colorbox{Grey}{./ncview /YOUR\_OUTPUT\_DIR/\*\_5d\_00010101\_00011230\_grid\_T.nc \&}\\
-
+\colorbox{Grey}{\texttt{>>}cd /homeappl/home/puotila/bin}\\
+\colorbox{Grey}{\texttt{>>}export HDF5\_DISABLE\_VERSION\_CHECK=1}\\
+\colorbox{Grey}{\texttt{>>}./ncview /YOUR\_OUTPUT\_DIR/\*\_5d\_00010101\_00011230\_grid\_T.nc \&}\\
+\subsection{Build nemo tools}
+TBA
+\section{Build and use barakuda on Taito}
+It is the best to build barakuda on taito
+\subsection{Get the code}
+Get the version from Petteri's git (you need permission)\\
+\colorbox{Grey}{\texttt{>>} git clone https://version.helsinki.fi/pjuotila/barakuda.git}\\
+\subsection{build up basemap}
+Before you get barakuda running you need to add lots of module packages for python.\\
+\insertcode{"../barakuda_script/basemap_install.sh"}{} 
+\subsection{build up cdftools}
+Go to folder cdftools\_light. \\
+1. make sure you have these modules. Otherwise load them. If can't make sure you login to taito-login4.\\
+ \colorbox{Grey}{\texttt{>>} module load intel python-env/intelpython3.5 hdf5-par netcdf4}\\
+2. link the make file.\\
+ \colorbox{Grey}{\texttt{>>} ln -s  make.macro  macro/macro.ifort\_taito}\\
+3. Make sure you use intel and then make \\
+ \colorbox{Grey}{\texttt{>>} gmake}\\
+\subsection{Use barakuda}
+1. Create your configuration file.\\
+ For example use configs/config\_ORCA1\_L75\_taito.sh \\
+ Change NEMO\_OUT\_STRCT, DIAG\_DIR, CONF\_INI\_DIR accordingly \\
+2. Get data from Petteri and put them in CONF\_INI\_DIR\\
+3. Tell taito where to find Petteri's NCO\\
+\colorbox{Grey}{\texttt{>>} export PATH=\$PATH:/homeappl/home/puotila/bin/ncks} \\
+4. Then launch the code with your own configuration file e.g. ORCA1\_L75\_YG\_taito and your experiment 
+\insertcode{"../barakuda_script/taito_barakuda.sh"}{} 
 \end{document}

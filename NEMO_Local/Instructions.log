@@ -1,9 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2018.3.6)  8 MAR 2018 14:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2018.3.6)  12 APR 2018 20:37
 entering extended mode
 **Instructions.tex
-
-("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
-_documentations\Instructions.tex"
+(J:\Scripts\NEMO_local\NEMO_Local\Instructions.tex
 LaTeX2e <2014/05/01>
 Babel <3.9k> and hyphenation patterns for 68 languages loaded.
 (C:\HYAPP\miktex\tex\latex\base\article.cls
@@ -99,8 +97,7 @@ Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 \c@blind@pangramcount=\count112
 \c@blind@pangrammax=\count113
 )
-("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
-_documentations\Instructions.aux")
+(J:\Scripts\NEMO_local\NEMO_Local\Instructions.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
 LaTeX Font Info:    ... okay on input line 60.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
@@ -137,41 +134,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
-
-("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
-_documentations\Instructions.toc")
+(J:\Scripts\NEMO_local\NEMO_Local\Instructions.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 2.
+)
 \tf@toc=\write3
  [1]
 (C:\HYAPP\miktex\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2014/03/04 1.5c listings language file
 )
-("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
-_documentations\get_nemo_code.bash"
+(J:\Scripts\NEMO_local\NEMO_Local\get_nemo_code.bash
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 1.
- (C:\HYAPP\miktex\tex\latex\psnfss\t1pcr.fd
+
+(C:\HYAPP\miktex\tex\latex\psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 5.
-LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 5.
-[2])
-Overfull \hbox (38.98991pt too wide) in paragraph at lines 82--85
+ [2])
+Overfull \hbox (38.98991pt too wide) in paragraph at lines 83--86
 \OT1/cmr/m/n/10.95 All com-piler op-tions in NEMO are con-trolled us-ing files 
 in NEMOGCM/ARCH/arch. 
  []
 
-
-("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
-_documentations\creat_compiler_links.bash" [3])
-("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
-_documentations\launch_GYRE_XIOS.bash" [4] [5])
-("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
-_documentations\launch_ORCA2_LIM3.bash" [6] [7])
-("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
-_documentations\launch_ORCA1_LIM3.bash" [8]
+(J:\Scripts\NEMO_local\NEMO_Local\creat_compiler_links.bash [3])
+(J:\Scripts\NEMO_local\NEMO_Local\launch_GYRE_XIOS.bash [4] [5])
+(J:\Scripts\NEMO_local\NEMO_Local\launch_ORCA2_LIM3.bash [6] [7])
+(J:\Scripts\NEMO_local\NEMO_Local\launch_ORCA1_LIM3.bash [8]
 LaTeX Font Info:    Try loading font information for OMS+pcr on input line 39.
 
 (C:\HYAPP\miktex\tex\latex\psnfss\omspcr.fd
@@ -180,42 +175,407 @@ File: omspcr.fd
 LaTeX Font Info:    Font shape `OMS/pcr/m/sl' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 39.
  [9]) [10]
-Overfull \hbox (21.82956pt too wide) in paragraph at lines 107--113
-\OT1/cmr/m/n/10.95 (e.g. ./mak-en-emo ./mak-en-emo -t $TM-PDIR -m XC40-SISU -n 
-MY[]GYRE[]XIOS
+Underfull \hbox (badness 10000) in paragraph at lines 108--112
+
+ []
+
+(J:\Scripts\NEMO_local\NEMO_sh_script\N101.sh
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 17--18
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 19--21
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 21--22
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 23--25
+[][][][] 
+ []
+
+[11]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 29--30
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 31--33
+[][][][] 
+ []
+
+[12]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 82--83
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 84--85
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 89--90
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 91--92
+[][][][] 
+ []
+
+[13]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 101--102
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 103--105
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 122--123
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 124--126
+[][][][] 
+ []
+
+[14]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 131--132
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 133--135
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 139--140
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 141--143
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 143--144
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 145--147
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 147--148
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 150--151
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 157--158
+[][][][] 
+ []
+
+[15]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 159--161
+[][][][] 
+ []
+
+[16]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 217--218
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 219--220
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 222--223
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 225--226
+[][][][] 
+ []
+
+[17]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 236--237
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 239--240
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 246--247
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 248--250
+[][][][] 
+ []
+
+[18] [19]
+Overfull \hbox (33.24402pt too wide) in paragraph at lines 300--301
+[][] 
+ []
+
+
+Overfull \hbox (146.64368pt too wide) in paragraph at lines 314--315
+[][][][] 
+ []
+
+
+Overfull \hbox (146.64368pt too wide) in paragraph at lines 316--317
+[][][][] 
+ []
+
+[20]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 355--356
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 357--358
+[][][][] 
+ []
+
+[21]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 379--380
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 381--383
+[][][][] 
+ []
+
+[22]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 388--389
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 390--392
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 417--418
+[][][][] 
+ []
+
+[23]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 419--420
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 441--442
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 443--445
+[][][][] 
+ []
+
+[24]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 458--459
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 463--464
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 478--479
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 480--481
+[][][][] 
+ []
+
+[25]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 492--493
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 494--496
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 510--511
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 512--513
+[][][][] 
+ []
+
+[26]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 522--523
+[][][][] 
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 524--526
+[][][][] 
+ []
+
+
+Overfull \hbox (16.23407pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (27.57404pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (16.23407pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (16.23407pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (16.23407pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (16.23407pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (16.23407pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (16.23407pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (84.27386pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (16.23407pt too wide) in paragraph at lines 533--534
+[][] 
+ []
+
+
+Overfull \hbox (10.56409pt too wide) in paragraph at lines 533--534
+[]  
+ []
+
+
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 544--545
+[][][][] 
+ []
+
+[27]
+Overfull \hbox (123.96375pt too wide) in paragraph at lines 546--547
+[][][][] 
+ []
+
+)
+Overfull \hbox (80.08766pt too wide) in paragraph at lines 114--120
+\OT1/cmr/m/n/10.95 (e.g. [][][][][][]) 
  []
 
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--119
+Underfull \hbox (badness 10000) in paragraph at lines 121--126
 
  []
 
-[11]
-("C:\Users\gong\OneDrive - University of Helsinki\Documents\Documentations\Nemo
-_documentations\Instructions.aux") ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--133
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+
+ []
+
+(J:\Scripts\NEMO_local\barakuda_script\basemap_install.sh [29])
+Underfull \hbox (badness 10000) in paragraph at lines 137--144
+
+ []
+
+
+Overfull \hbox (34.09805pt too wide) in paragraph at lines 145--152
+\OT1/cmr/m/n/10.95 4. Then launch the code with your own con-fig-u-ra-tion file
+ e.g. ORCA1[]L75[]YG[]taito
+ []
+
+(J:\Scripts\NEMO_local\barakuda_script\taito_barakuda.sh [30]) [31]
+(J:\Scripts\NEMO_local\NEMO_Local\Instructions.aux) ) 
 Here is how much of TeX's memory you used:
- 3073 strings out of 493579
- 44059 string characters out of 3147652
- 289542 words of memory out of 3000000
- 6509 multiletter control sequences out of 15000+200000
- 8533 words of font info for 30 fonts, out of 3000000 for 9000
+ 3382 strings out of 493579
+ 47633 string characters out of 3147652
+ 289693 words of memory out of 3000000
+ 6800 multiletter control sequences out of 15000+200000
+ 10536 words of font info for 37 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  32i,6n,52p,390b,1877s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/HYAPP/miktex/fonts/enc/dvips/fontname/8
-r.enc}<C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/HYAPP/mikt
-ex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/HYAPP/miktex/fonts/type1/publi
-c/amsfonts/cm/cmbx9.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmr10.p
-fb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/HYAPP/miktex/fo
-nts/type1/public/amsfonts/cm/cmsy9.pfb><C:/HYAPP/miktex/fonts/type1/public/amsf
-onts/cm/cmti12.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C
-:/HYAPP/miktex/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/HYAPP/mikt
-ex/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Instructions.pdf (12 pages, 183237 bytes).
+{C:/HYAPP/miktex/fonts/enc
+/dvips/fontname/8r.enc}<C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmbx10.p
+fb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/HYAPP/miktex/
+fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/HYAPP/miktex/fonts/type1/public/am
+sfonts/cm/cmr10.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><C
+:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/HYAPP/miktex/fonts/
+type1/public/amsfonts/cm/cmti12.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfont
+s/cm/cmtt10.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/H
+YAPP/miktex/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/HYAPP/miktex/
+fonts/type1/urw/courier/ucrro8a.pfb>
+Output written on Instructions.pdf (32 pages, 277318 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
+ 150 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
