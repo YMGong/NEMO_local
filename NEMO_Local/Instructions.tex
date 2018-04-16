@@ -22,6 +22,14 @@
 \usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
 \usepackage{blindtext} % for dummy text
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
 \definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
 \definecolor{Grey}{rgb}{0.6,0.6,0.6} % Comment color
 \definecolor{highlight}{RGB}{255,251,204} % Code highlight color
@@ -63,7 +71,7 @@ tabsize=2, % Number of spaces per tab in the code
    \begin{center}
       \Large\textbf{Instructions for using NEMO on SISU}\\[4\baselineskip]
       \large\textit{Yongmei Gong}\\
-      \large\textit{12 April, 2018}
+      \large\textit{12 April 2018}
    \end{center}
    \vspace*{\stretch{2.0}}
 \end{titlepage}
@@ -150,4 +158,23 @@ Go to folder cdftools\_light. \\
 \colorbox{Grey}{\texttt{>>} export PATH=\$PATH:/homeappl/home/puotila/bin/ncks} \\
 4. Then launch the code with your own configuration file e.g. ORCA1\_L75\_YG\_taito and your experiment 
 \insertcode{"../barakuda_script/taito_barakuda.sh"}{} 
+\subsection{Use Opendrift}
+OpenDrift is a software for modeling the trajectories and fate of objects or substances drifting in the ocean, or even in the atmosphere.\\
+You can get very detailed instructions here on how to build and use it:\\
+\url{https://github.com/opendrift/opendrift/wiki}\\
+There are several things to do before building it on Taito.\\
+\# Note that OpenDrift (as well as some of the requirements) does not support Python3, so that I use python-env/intelpython2.7-2018.2\\
+\colorbox{Grey}{\texttt{>>}module load hdf5-par netcdf4 python-env/intelpython2.7-2018.2 ffmpeg imagemagick}\\
+\# conda asked me to clone a user root even though I tried to build a local module site package.\\
+\colorbox{Grey}{\texttt{>>}conda create -n my\_root --clone="/appl/opt/python/intelpython27-2018.2/intelpython2"}\\
+\# go to my root\\
+\colorbox{Grey}{\texttt{>>}source activate my\_root}\\
+\# now install the modules.\\ 
+\colorbox{Grey}{\texttt{>>}conda install --yes --use-local hdf4 numpy scipy matplotlib basemap netcdf4 configobj pillow gdal}\\
+\colorbox{Grey}{pyproj ffmpeg}\\
+\# then export the path and build.\\
+\colorbox{Grey}{\texttt{>>}export PATH=$PATH:$OPENDRIFT\_FOLDER/opendrift/scripts/}\\
+\colorbox{Grey}{\texttt{>>}python setup.py develop --user}\\
+\# then test.\\
+\colorbox{Grey}{\texttt{>>}testall}\\
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2018.3.6)  12 APR 2018 20:37
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2018.3.6)  16 APR 2018 16:30
 entering extended mode
 **Instructions.tex
 (J:\Scripts\NEMO_local\NEMO_Local\Instructions.tex
@@ -97,54 +97,187 @@ Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 \c@blind@pangramcount=\count112
 \c@blind@pangrammax=\count113
 )
+(C:\HYAPP\miktex\tex\latex\hyperref\hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(C:\HYAPP\miktex\tex\generic\oberdiek\hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
+
+
+(C:\HYAPP\miktex\tex\generic\oberdiek\hobsub-generic.sty
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(C:\HYAPP\miktex\tex\generic\ifxetex\ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(C:\HYAPP\miktex\tex\latex\oberdiek\auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(C:\HYAPP\miktex\tex\latex\oberdiek\kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen107
+\Hy@linkcounter=\count114
+\Hy@pagecounter=\count115
+
+(C:\HYAPP\miktex\tex\latex\hyperref\pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count116
+
+(C:\HYAPP\miktex\tex\latex\00miktex\hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count117
+
+(C:\HYAPP\miktex\tex\latex\url\url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen108
+\Fld@menulength=\count118
+\Field@Width=\dimen109
+\Fld@charsize=\dimen110
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count119
+\c@Item=\count120
+\c@Hfootnote=\count121
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(C:\HYAPP\miktex\tex\latex\hyperref\hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count122
+\c@bookmark@seq@number=\count123
+
+(C:\HYAPP\miktex\tex\latex\oberdiek\rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip43
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 31.
+
 (J:\Scripts\NEMO_local\NEMO_Local\Instructions.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-\c@lstlisting=\count114
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+\c@lstlisting=\count124
 
 (C:\HYAPP\miktex\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count115
-\scratchdimen=\dimen107
+\scratchcounter=\count125
+\scratchdimen=\dimen111
 \scratchbox=\box28
-\nofMPsegments=\count116
-\nofMParguments=\count117
+\nofMPsegments=\count126
+\nofMParguments=\count127
 \everyMPshowfont=\toks16
-\MPscratchCnt=\count118
-\MPscratchDim=\dimen108
-\MPnumerator=\count119
-\makeMPintoPDFobject=\count120
+\MPscratchCnt=\count128
+\MPscratchDim=\dimen112
+\MPnumerator=\count129
+\makeMPintoPDFobject=\count130
 \everyMPtoPDFconversion=\toks17
-) [1
+)
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring ON on input line 68.
+ (C:\HYAPP\miktex\tex\latex\hyperref\nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(C:\HYAPP\miktex\tex\generic\oberdiek\gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count131
+)
+LaTeX Info: Redefining \ref on input line 68.
+LaTeX Info: Redefining \pageref on input line 68.
+LaTeX Info: Redefining \nameref on input line 68.
+\@outlinefile=\write3
+ [1
 
 {C:/HYAPP/miktex/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
-(J:\Scripts\NEMO_local\NEMO_Local\Instructions.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 2.
-)
-\tf@toc=\write3
- [1]
-(C:\HYAPP\miktex\tex\latex\listings\lstlang1.sty
+
+Package hyperref Warning: old toc file detected, not used; run LaTeX again.
+
+\tf@toc=\write4
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.81 \newpage
+              [1] (C:\HYAPP\miktex\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2014/03/04 1.5c listings language file
 )
 (J:\Scripts\NEMO_local\NEMO_Local\get_nemo_code.bash
@@ -156,9 +289,11 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 5.
  [2])
-Overfull \hbox (38.98991pt too wide) in paragraph at lines 83--86
+Overfull \hbox (38.98991pt too wide) in paragraph at lines 91--94
 \OT1/cmr/m/n/10.95 All com-piler op-tions in NEMO are con-trolled us-ing files 
 in NEMOGCM/ARCH/arch. 
  []
@@ -175,7 +310,7 @@ File: omspcr.fd
 LaTeX Font Info:    Font shape `OMS/pcr/m/sl' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 39.
  [9]) [10]
-Underfull \hbox (badness 10000) in paragraph at lines 108--112
+Underfull \hbox (badness 10000) in paragraph at lines 116--120
 
  []
 
@@ -520,7 +655,7 @@ Overfull \hbox (123.96375pt too wide) in paragraph at lines 546--547
  []
 
 )
-Overfull \hbox (80.08766pt too wide) in paragraph at lines 114--120
+Overfull \hbox (80.08766pt too wide) in paragraph at lines 122--128
 \OT1/cmr/m/n/10.95 (e.g. [][][][][][]) 
  []
 
@@ -528,54 +663,96 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--126
+Underfull \hbox (badness 10000) in paragraph at lines 129--134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--133
+Underfull \hbox (badness 10000) in paragraph at lines 139--141
 
  []
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 134--135
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 
  []
 
 (J:\Scripts\NEMO_local\barakuda_script\basemap_install.sh [29])
-Underfull \hbox (badness 10000) in paragraph at lines 137--144
+Underfull \hbox (badness 10000) in paragraph at lines 145--152
 
  []
 
 
-Overfull \hbox (34.09805pt too wide) in paragraph at lines 145--152
+Overfull \hbox (34.09805pt too wide) in paragraph at lines 153--160
 \OT1/cmr/m/n/10.95 4. Then launch the code with your own con-fig-u-ra-tion file
  e.g. ORCA1[]L75[]YG[]taito
  []
 
-(J:\Scripts\NEMO_local\barakuda_script\taito_barakuda.sh [30]) [31]
-(J:\Scripts\NEMO_local\NEMO_Local\Instructions.aux) ) 
+(J:\Scripts\NEMO_local\barakuda_script\taito_barakuda.sh [30])
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 164.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 164.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 180.
+
+Overfull \hbox (65.11159pt too wide) in paragraph at lines 162--180
+[][][][][][] 
+ []
+
+
+Overfull \hbox (82.77156pt too wide) in paragraph at lines 162--180
+[][][][][][] 
+ []
+
+
+Overfull \hbox (120.74365pt too wide) in paragraph at lines 162--180
+[][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--180
+
+ []
+
+[31]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 180.
+ (J:\Scripts\NEMO_local\NEMO_Local\Instructions.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 180.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 180.
+
+
+Package rerunfilecheck Warning: File `Instructions.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Instructions.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  8CF8D3722A7D7159F51C22725022FEA6;1157.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 180.
+ ) 
 Here is how much of TeX's memory you used:
- 3382 strings out of 493579
- 47633 string characters out of 3147652
- 289693 words of memory out of 3000000
- 6800 multiletter control sequences out of 15000+200000
- 10536 words of font info for 37 fonts, out of 3000000 for 9000
+ 8139 strings out of 493579
+ 119906 string characters out of 3147652
+ 373821 words of memory out of 3000000
+ 10547 multiletter control sequences out of 15000+200000
+ 10228 words of font info for 36 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 32i,6n,52p,390b,1877s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/HYAPP/miktex/fonts/enc
-/dvips/fontname/8r.enc}<C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmbx10.p
-fb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/HYAPP/miktex/
-fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/HYAPP/miktex/fonts/type1/public/am
-sfonts/cm/cmr10.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><C
-:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/HYAPP/miktex/fonts/
-type1/public/amsfonts/cm/cmti12.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfont
-s/cm/cmtt10.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/H
-YAPP/miktex/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/HYAPP/miktex/
-fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Instructions.pdf (32 pages, 277318 bytes).
+ 32i,6n,52p,390b,2082s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/HYAPP/miktex/fonts/enc/dvips/fontname/8r.enc}<C:/HYAPP/miktex/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/
+cmbx9.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/HYAPP/
+miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/HYAPP/miktex/fonts/type1/pu
+blic/amsfonts/cm/cmr6.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmsy9
+.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/HYAPP/mikte
+x/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/HYAPP/miktex/fonts/type1/public
+/amsfonts/cm/cmtt9.pfb><C:/HYAPP/miktex/fonts/type1/public/amsfonts/latxfont/lc
+ircle1.pfb><C:/HYAPP/miktex/fonts/type1/urw/courier/ucrro8a.pfb>
+Output written on Instructions.pdf (32 pages, 405145 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
+ 1319 PDF objects out of 1440 (max. 8388607)
+ 971 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -63,7 +63,7 @@ tabsize=2, % Number of spaces per tab in the code
    \begin{center}
       \Large\textbf{Instructions for using NEMO on SISU}\\[4\baselineskip]
       \large\textit{Yongmei Gong}\\
-      \large\textit{8 March, 2018}
+      \large\textit{12 April 2018}
    \end{center}
    \vspace*{\stretch{2.0}}
 \end{titlepage}
@@ -116,7 +116,7 @@ If something has gone wrong with or has been changed for the build of nemo (nemo
 \colorbox{Grey}{\texttt{>>}./makenemo -C YOUR\_CONFIG clean\_config}\\
 -	Uninstalling (Clean up the whole thing)\\
 \colorbox{Grey}{\texttt{>>}./makenemo -n YOUR\_BUILD clean}\\
-(e.g. ./makenemo ./makenemo -t \$TMPDIR -m XC40-SISU -n MY\_GYRE\_XIOS clean)
+(e.g. \colorbox{Grey}{\texttt{>>}./makenemo ./makenemo -t \$TMPDIR -m XC40-SISU -n MY\_GYRE\_XIOS clean})
 \subsection{Check the run status and outputs}
 - If run crushes, try to find 'E R R O R' section in ocean.output 
 - Use ncview (now it is only in Petteri’s directory) to check the results *nc files
@@ -140,14 +140,33 @@ Go to folder cdftools\_light. \\
 2. link the make file.\\
  \colorbox{Grey}{\texttt{>>} ln -s  make.macro  macro/macro.ifort\_taito}\\
 3. Make sure you use intel and then make \\
- \texttt{>>} gmake
+ \colorbox{Grey}{\texttt{>>} gmake}\\
 \subsection{Use barakuda}
 1. Create your configuration file.\\
  For example use configs/config\_ORCA1\_L75\_taito.sh \\
  Change NEMO\_OUT\_STRCT, DIAG\_DIR, CONF\_INI\_DIR accordingly \\
 2. Get data from Petteri and put them in CONF\_INI\_DIR\\
 3. Tell taito where to find Petteri's NCO\\
-\texttt{>>} export PATH=\$PATH:/homeappl/home/puotila/bin/ncks \\
+\colorbox{Grey}{\texttt{>>} export PATH=\$PATH:/homeappl/home/puotila/bin/ncks} \\
 4. Then launch the code with your own configuration file e.g. ORCA1\_L75\_YG\_taito and your experiment 
 \insertcode{"../barakuda_script/taito_barakuda.sh"}{} 
+\subsection{Use Opendrift}
+OpenDrift is a software for modeling the trajectories and fate of objects or substances drifting in the ocean, or even in the atmosphere.\\
+You can get very detailed instructions here on how to build and use it:\\
+\url{https://github.com/opendrift/opendrift/wiki}\\
+There are several things to do before building it on Taito.\\
+\# Note that OpenDrift (as well as some of the requirements) does not support Python3, so that I use python-env/intelpython2.7-2018.2\\
+\colorbox{Grey}{\texttt{>>}module load hdf5-par netcdf4 python-env/intelpython2.7-2018.2 ffmpeg imagemagick}\\
+\# conda asked me to clone a user root even though I tried to build a local module site package.\\
+\colorbox{Grey}{\texttt{>>}conda create -n my\_root --clone="/appl/opt/python/intelpython27-2018.2/intelpython2"}\\
+\# go to my root\\
+\colorbox{Grey}{\texttt{>>}source activate my\_root}\\
+\# now install the modules.\\ 
+\colorbox{Grey}{\texttt{>>}conda install --yes --use-local hdf4 numpy scipy matplotlib basemap netcdf4 configobj pillow gdal}\\
+\colorbox{Grey}{pyproj ffmpeg}\\
+\# then export the path and build.\\
+\colorbox{Grey}{\texttt{>>}export PATH=$PATH:$OPENDRIFT\_FOLDER/opendrift/scripts/}\\
+\colorbox{Grey}{\texttt{>>}python setup.py develop --user}\\
+\# then test.\\
+\colorbox{Grey}{\texttt{>>}testall}\\
 \end{document}
