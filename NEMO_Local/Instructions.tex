@@ -163,18 +163,31 @@ OpenDrift is a software for modeling the trajectories and fate of objects or sub
 You can get very detailed instructions here on how to build and use it:\\
 \url{https://github.com/opendrift/opendrift/wiki}\\
 There are several things to do before building it on Taito.\\
-\# Note that OpenDrift (as well as some of the requirements) does not support Python3, so that I use python-env/intelpython2.7-2018.2\\
-\colorbox{Grey}{\texttt{>>}module load hdf5-par netcdf4 python-env/intelpython2.7-2018.2 ffmpeg imagemagick}\\
-\# conda asked me to clone a user root even though I tried to build a local module site package.\\
-\colorbox{Grey}{\texttt{>>}conda create -n my\_root --clone="/appl/opt/python/intelpython27-2018.2/intelpython2"}\\
-\# go to my root\\
-\colorbox{Grey}{\texttt{>>}source activate my\_root}\\
-\# now install the modules.\\ 
-\colorbox{Grey}{\texttt{>>}conda install --yes --use-local hdf4 numpy scipy matplotlib basemap netcdf4 configobj pillow gdal}\\
-\colorbox{Grey}{pyproj ffmpeg}\\
-\# then export the path and build.\\
-\colorbox{Grey}{\texttt{>>}export PATH=$PATH:$OPENDRIFT\_FOLDER/opendrift/scripts/}\\
+Note that OpenDrift (as well as some of the requirements) does not support Python3, so that I use python-env/intelpython2.7-2018.2\\
+\colorbox{Grey}{\texttt{>>}module load geo-env ffmpeg imagemagick}\\
+Install miniconda to be able to get the modules in your user local\\
+Get it from here:
+https://conda.io/miniconda.html\\
+Then install \\
+\colorbox{Grey}{\texttt{>>}bash Miniconda3-latest-Linux-x86\_64.sh}\\
+Follow the instruction then when it asks the installing path type:\\
+\colorbox{Grey}{\texttt{>>}\$HOME/.local/bin/miniconda2/}\\
+Then follow the instructions again.\\
+When finished check if you are using miniconda in your .local/bin/mminiconda2 or not:\\
+\colorbox{Grey}{\texttt{>>}which conda}\\
+Also check if you are using the python in you miniconda copy\\
+\colorbox{Grey}{\texttt{>>}which python}\\
+Now install the module packages. NOTE that most of the listed modules are installed already in the python2.7 in geo-env. There are only four missing (see below).\\ 
+\colorbox{Grey}{\texttt{>>}conda install --yes hdf4 basemap configobj ffmpeg}\\
+Then export the path and build.\\
+\colorbox{Grey}{\texttt{>>}export PATH=\textdollar PATH:\textdollar OPENDRIFT\_FOLDER/opendrift/scripts/}\\
 \colorbox{Grey}{\texttt{>>}python setup.py develop --user}\\
-\# then test.\\
-\colorbox{Grey}{\texttt{>>}testall}\\
+export GDAL\_DATA equal to the folder given by\\
+\colorbox{Grey}{\texttt{>>}gdal-config --datadir}\\
+In my case: \\
+\colorbox{Grey}{\texttt{>>}export GDAL\_DATA=/appl/earth/gdal/2.2.1/share/gdal}\\
+Then you need to use it in external terminal.\\
+\colorbox{Grey}{\texttt{>>}xterm \&}\\
+Then test.\\
+\colorbox{Grey}{\texttt{>>}./testall}\\
 \end{document}
