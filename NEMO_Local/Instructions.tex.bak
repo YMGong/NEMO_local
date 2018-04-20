@@ -158,13 +158,13 @@ Go to folder cdftools\_light. \\
 \colorbox{Grey}{\texttt{>>} export PATH=\$PATH:/homeappl/home/puotila/bin/ncks} \\
 4. Then launch the code with your own configuration file e.g. ORCA1\_L75\_YG\_taito and your experiment 
 \insertcode{"../barakuda_script/taito_barakuda.sh"}{} 
-\subsection{Use Opendrift}
+\section{Build and use Opendrift on taito}
 OpenDrift is a software for modeling the trajectories and fate of objects or substances drifting in the ocean, or even in the atmosphere.\\
 You can get very detailed instructions here on how to build and use it:\\
 \url{https://github.com/opendrift/opendrift/wiki}\\
 There are several things to do before building it on Taito.\\
 Note that OpenDrift (as well as some of the requirements) does not support Python3, so that I use python-env/intelpython2.7-2018.2\\
-\colorbox{Grey}{\texttt{>>}module load hdf5-par netcdf4 python-env/intelpython2.7-2018.2 ffmpeg imagemagick}\\
+\colorbox{Grey}{\texttt{>>}module load geo-env ffmpeg imagemagick}\\
 Install miniconda to be able to get the modules in your user local\\
 Get it from here:
 https://conda.io/miniconda.html\\
@@ -177,14 +177,31 @@ When finished check if you are using miniconda in your .local/bin/mminiconda2 or
 \colorbox{Grey}{\texttt{>>}which conda}\\
 Also check if you are using the python in you miniconda copy\\
 \colorbox{Grey}{\texttt{>>}which python}\\
-Now install the modules.\\ 
-\colorbox{Grey}{\texttt{>>}conda install --yes --use-local hdf4 numpy scipy matplotlib basemap netcdf4 configobj pillow gdal}\\
-\colorbox{Grey}{pyproj ffmpeg}\\
+Now install the module packages. NOTE that most of the listed modules are installed already in the python2.7 in geo-env. There are only four missing (see below).\\ 
+\colorbox{Grey}{\texttt{>>}conda install --yes hdf4 basemap configobj ffmpeg}\\
 Then export the path and build.\\
 \colorbox{Grey}{\texttt{>>}export PATH=\textdollar PATH:\textdollar OPENDRIFT\_FOLDER/opendrift/scripts/}\\
 \colorbox{Grey}{\texttt{>>}python setup.py develop --user}\\
-export GDAL_DATA equal to the folder given by $gdal-config --datadir
-\colorbox{Grey}{\texttt{>>}\textdollar HOME/.local/bin/mminiconda2/share/gdal}\\
+export GDAL\_DATA equal to the folder given by\\
+\colorbox{Grey}{\texttt{>>}gdal-config --datadir}\\
+In my case: \\
+\colorbox{Grey}{\texttt{>>}export GDAL\_DATA=/appl/earth/gdal/2.2.1/share/gdal}\\
+Then you need to use it in external terminal.\\
+\colorbox{Grey}{\texttt{>>}xterm \&}\\
 Then test.\\
 \colorbox{Grey}{\texttt{>>}./testall}\\
+\section{Build and use OceanParcels on taito}
+Here (\url{http://www.oceanparcels.org/}) are very detailed instructions and they work well assuming you have installed miniconda2 correctly on Taito.\\
+\colorbox{Grey}{\texttt{>>}module load geo-env ffmpeg imagemagick}\\
+Install miniconda to be able to get the modules in your user local\\
+Get it from here:
+\url{https://conda.io/miniconda.html}\\
+Then install \\
+\colorbox{Grey}{\texttt{>>}bash Miniconda3-latest-Linux-x86\_64.sh}\\
+Follow the instruction then when it asks the installing path type:\\
+\colorbox{Grey}{\texttt{>>}\$HOME/.local/bin/miniconda2/}\\
+Get OceanPar code from github.\\
+\colorbox{Grey}{\texttt{>>}git clone https://github.com/OceanParcels/parcels.git}\\
+Then follow the instructions from Step 2 - 3. Except that you try the example like this:\\
+\colorbox{Grey}{\texttt{>>}python example\_peninsula.py -f 100 100}\\
 \end{document}

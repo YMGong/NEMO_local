@@ -158,7 +158,7 @@ Go to folder cdftools\_light. \\
 \colorbox{Grey}{\texttt{>>} export PATH=\$PATH:/homeappl/home/puotila/bin/ncks} \\
 4. Then launch the code with your own configuration file e.g. ORCA1\_L75\_YG\_taito and your experiment 
 \insertcode{"../barakuda_script/taito_barakuda.sh"}{} 
-\subsection{Use Opendrift}
+\section{Build and use Opendrift on taito}
 OpenDrift is a software for modeling the trajectories and fate of objects or substances drifting in the ocean, or even in the atmosphere.\\
 You can get very detailed instructions here on how to build and use it:\\
 \url{https://github.com/opendrift/opendrift/wiki}\\
@@ -190,4 +190,18 @@ Then you need to use it in external terminal.\\
 \colorbox{Grey}{\texttt{>>}xterm \&}\\
 Then test.\\
 \colorbox{Grey}{\texttt{>>}./testall}\\
+\section{Build and use OceanParcels on taito}
+Here (\url{http://www.oceanparcels.org/}) are very detailed instructions and they work well assuming you have installed miniconda2 correctly on Taito.\\
+\colorbox{Grey}{\texttt{>>}module load geo-env ffmpeg imagemagick}\\
+Install miniconda to be able to get the modules in your user local\\
+Get it from here:
+\url{https://conda.io/miniconda.html}\\
+Then install \\
+\colorbox{Grey}{\texttt{>>}bash Miniconda3-latest-Linux-x86\_64.sh}\\
+Follow the instruction then when it asks the installing path type:\\
+\colorbox{Grey}{\texttt{>>}\$HOME/.local/bin/miniconda2/}\\
+Get OceanParcels code from github.\\
+\colorbox{Grey}{\texttt{>>}git clone https://github.com/OceanParcels/parcels.git}\\
+Then follow the instructions from Step 2 - 3. Except that you try the example like this:\\
+\colorbox{Grey}{\texttt{>>}python example\_peninsula.py -f 100 100}\\
 \end{document}
