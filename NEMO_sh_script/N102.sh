@@ -35,13 +35,13 @@ ${pre_load_modules_cmd}
 config="nemo lim3 xios:detached"
 
 # Experiment name (exactly 4 letters!)
-exp_name=N103
+exp_name=N105
 nem_forcing_set=JRA-55
 nem_forcing_dir=/wrk/puotila/${nem_forcing_set}
 
 # Simulation start and end date. Use any (reasonable) syntax you want.
 run_start_date="1958-01-01"
-run_end_date="${run_start_date} + 4 years"
+run_end_date="1990-01-01"
 
 # Set $force_run_from_scratch to 'true' if you want to force this run to start
 # from scratch, possibly ignoring any restart files present in the run
@@ -58,7 +58,7 @@ nem_grid=ORCA1L75
 rst_freq="1 year"
 
 # Number of restart legs to be run in one job
-run_num_legs=2
+run_num_legs=1
 
 # Directories
 
@@ -315,47 +315,6 @@ do
         echo "                               0  0.0000000000000000E+00  0.0000000000000000E+00" > EMPave_old.dat
 	
 
-        # -------------------------------------------------------------------------
-        # *** Link atmospheric forcing files for this leg
-        # -------------------------------------------------------------------------
-	case ${nem_forcing_set} in
-	    DFS5.2)
-		for v in u10 v10 t2 q2 precip snow radlw radsw; do
-		    for i in $(eval echo {$leg_start_date_yyyy..$leg_end_date_yyyy}); do
-			ln -fs ${nem_forcing_dir}/drowned_${v}_DFS5.2_y${i}.nc ./${v}_y${i}.nc
-		    done
-		done
-                # Link DFS52 weight files for corresponding grid
-                # Weight files for forcing
-		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bilinear.nc .
-		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bicubic.nc .
-		;;
-
-	    JRA-55)
-		for v in uas vas tas huss prra prsn rlds rsds; do
-		    for i in $(eval echo {$leg_start_date_yyyy..$leg_end_date_yyyy}); do
-			## !!!!!!!!!!!!!!!!!!!!!!!!!not sure about this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			ln -fs ${nem_forcing_dir}/${v}_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-3_gn_${i}*.nc ./${v}_y${i}.nc
-		    done
-		done
-                # Link JRA-55 weight files for corresponding grid
-                # Weight files for forcing
-		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bilinear.nc .
-		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bicubic.nc .
-		;;
-	    *)
-                # Link NEMO CoreII forcing files (only set supported out-of-the-box)
-		for v in u_10 v_10 t_10 q_10 ncar_precip ncar_rad
-		do
-		    f="${ini_data_dir}/nemo/forcing/CoreII/${v}.15JUNE2009_fill.nc"
-		    [ -f "$f" ] && ln -s $f
-		done
-                # Link CoreII weight files for corresponding grid
-		ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bilinear.nc
-		ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bicubic.nc
-		;;
-	esac
-
         # XIOS files
         . ${ctrl_file_dir}/iodef.xml.sh > iodef.xml 
 	#ln -s ${ctrl_file_dir}/iodef.xml
@@ -401,6 +360,47 @@ do
         rm -f ${exp_name}_??_????????_????????_{grid_U,grid_V,grid_W,grid_T,icemod,SBC,scalar,SBC_scalar,diad_T}.nc
 
     fi # ! $leg_is_restart
+     # -------------------------------------------------------------------------
+     # *** Link atmospheric forcing files for this leg
+     # -------------------------------------------------------------------------
+     case ${nem_forcing_set} in
+         DFS5.2)
+	     for v in u10 v10 t2 q2 precip snow radlw radsw; do
+		 for i in $(eval echo {$leg_start_date_yyyy..$leg_end_date_yyyy}); do
+		     ln -fs ${nem_forcing_dir}/drowned_${v}_DFS5.2_y${i}.nc ./${v}_y${i}.nc
+		 done
+	     done
+                # Link DFS52 weight files for corresponding grid
+                # Weight files for forcing
+		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bilinear.nc .
+		ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bicubic.nc .
+		;;
+
+	 JRA-55)
+	     for v in uas vas tas huss prra prsn rlds rsds; do
+		 for i in $(eval echo {$leg_start_date_yyyy..$leg_end_date_yyyy}); do
+			## !!!!!!!!!!!!!!!!!!!!!!!!!not sure about this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		     ln -fs ${nem_forcing_dir}/${v}_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-3_gn_${i}*.nc ./${v}_y${i}.nc
+		 done
+	     done
+                # Link JRA-55 weight files for corresponding grid
+                # Weight files for forcing
+	     ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bilinear.nc .
+	     ln -sf ${nem_forcing_dir}/weights_${nem_forcing_set}_orca${nem_res_hor}_bicubic.nc .
+	     ;;
+	 *)
+                # Link NEMO CoreII forcing files (only set supported out-of-the-box)
+	     for v in u_10 v_10 t_10 q_10 ncar_precip ncar_rad
+	     do
+		 f="${ini_data_dir}/nemo/forcing/CoreII/${v}.15JUNE2009_fill.nc"
+		 [ -f "$f" ] && ln -s $f
+	     done
+               # Link CoreII weight files for corresponding grid
+	     ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bilinear.nc
+	     ln -s ${ini_data_dir}/nemo/forcing/CoreII/weights_coreII_2_orca${nem_res_hor}_bicubic.nc
+	     ;;
+     esac
+
 
     # -------------------------------------------------------------------------
     # *** Create some control files
